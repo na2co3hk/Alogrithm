@@ -39,6 +39,24 @@ public:
 
 ### 解法二：哈希表
 创建一个哈希映射，将已经遍历过的数组元素和下标以 $key-value$ 形式保存下来，若能在映射中找到 $target - num$ 则表示找到了两数之和
-
-
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int>hashtable;
+        for (int i = 0;i<nums.size();i++)
+        {
+            auto it = hashtable.find(target - nums[i]);//两数之和减去其中一个,target-nums[i]为键值
+            if (it != hashtable.end())//找到了
+            {
+                return{ it->second,i };
+            }
+            hashtable[nums[i]] = i;
+        }
+        return {};
+    }
+};
+```
+* 时间复杂度： $O(n)$
+* 空间复杂度： $O(n)$ ,使用哈希表
 

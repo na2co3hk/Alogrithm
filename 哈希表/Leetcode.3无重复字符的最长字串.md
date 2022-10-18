@@ -68,7 +68,7 @@ public:
 };
 ```
 
-最后附赠一下滑动窗口模板
+最后附赠一下滑动窗口模板（python版本）
 ```py
 //模板
 def findSubArray(nums):

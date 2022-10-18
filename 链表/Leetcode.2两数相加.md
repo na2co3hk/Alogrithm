@@ -56,3 +56,84 @@ public:
 * 空间复杂度： $O(1)$ 
 
 附赠高精度运算模板
+高精度加法
+```cpp
+//高精度加法，适用于数很大的情况（大于1e6)
+vector<int> add(vector<int> &A, vector<int> &B)//此时数组都是逆序存储（个位在下标0的位置）
+{
+    if (A.size() < B.size()) return add(B, A);//默认A的位数大于B的位数好运算一些
+
+    vector<int> C;//结果数组
+    int t = 0;//进位
+    for (int i = 0; i < A.size(); i ++ )
+    {
+        t += A[i];
+        if (i < B.size()) t += B[i];
+        C.push_back(t % 10);//取两个相加的个位
+        t /= 10;//取两个数相加的十位，如果没有十位则变成0
+    }
+
+    if (t) C.push_back(t);//剩余的t判断最高位是否存在进位
+    return C;
+}
+```
+
+高精度减法
+```cpp
+//高精度减法
+vector<int> sub(vector<int> &A, vector<int> &B)
+{
+    vector<int> C;
+    for (int i = 0, t = 0; i < A.size(); i ++ )
+    {
+        t = A[i] - t;
+        if (i < B.size()) t -= B[i];
+        C.push_back((t + 10) % 10);//+10判断借位，如果不需要借位，则刚好%10抵消
+        if (t < 0) t = 1;//有借位
+        else t = 0;//没有借位
+    }
+
+    while (C.size() > 1 && C.back() == 0) C.pop_back();//得到的结果前面如果有不需要的0比如数组存储300000（代表的是数字3）则要把前面的0消掉
+    return C;
+}
+```
+
+高精度乘法
+```cpp
+//高精度乘法
+vector<int> mul(vector<int> &A, int b)//高精度整数乘以低精度整数
+{
+    vector<int> C;
+
+    int t = 0;//进位
+    for (int i = 0; i < A.size() || t; i ++ )//当A中还有位数或者还有进位（没乘完）
+    {
+        if (i < A.size()) t += A[i] * b;
+        C.push_back(t % 10);
+        t /= 10;
+    }
+
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+
+    return C;
+}
+```
+
+高精度除法
+```cpp
+//高精度除法
+vector<int> div(vector<int> &A, int b, int &r)
+{
+    vector<int> C;
+    r = 0;//余数
+    for (int i = A.size() - 1; i >= 0; i -- )
+    {
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());//除法运算是从高位开始，所以结果数组也是从高位开始，需要反转一下
+    while (C.size() > 1 && C.back() == 0) C.pop_back();//去除前面无用的0
+    return C;
+}
+```

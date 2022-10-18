@@ -16,7 +16,7 @@ Tag : 「动态规划」、「记忆化搜索」、「递归」
 * 1 <= n <= 109
 
 ### 解法一：记忆化搜索
-解题思路来自灵神的模板，以下都是自己的理解
+解题思路和题解来自灵神，以下都是自己的理解
 
 本题是leetcode上经典的一道数位DP的题目，难度为困难
 
@@ -32,6 +32,29 @@ Tag : 「动态规划」、「记忆化搜索」、「递归」
 
 我们用两个参数来代表这两个限制
 
-$islimit$ 代表数字选择的限制， $True$ 表示上一位受限， $False$ 表示上一位不受限
+* $islimit$ 代表数字选择的限制， $True$ 表示上一位受限， $False$ 表示上一位不受限
 
-$isnum$ 代表选不选数字， $True$ 代表上一位选的是数字， $False$ 表示上一位选的不是数字
+* $isnum$ 代表选不选数字， $True$ 代表上一位选的是数字， $False$ 表示上一位选的不是数字
+
+枚举到和边界数字的位数就是递归终点
+
+代码如下：
+```py
+class Solution:
+    def atMostNGivenDigitSet(self, digits: List[str], n: int) -> int:
+        s = str(n)
+        @cache
+        def f(i: int, is_limit: bool, is_num: bool) -> int:
+            if i == len(s):
+                return int(is_num)
+            res = 0
+            if not is_num:
+                res = f(i + 1, False, False)
+            up = s[i] if is_limit else '9' #确定上界
+            for d in digits:
+                if d > up:
+                    break
+                res += f(i + 1, is_limit and d == up, True)
+            return res
+        return f(0, True, False)
+```

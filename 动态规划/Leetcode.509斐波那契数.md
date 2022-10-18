@@ -1,4 +1,4 @@
-### 原题链接 -- [[509斐波那契数](https://leetcode.cn/problems/fibonacci-number/)]
+### 原题链接 -- [[509.斐波那契数](https://leetcode.cn/problems/fibonacci-number/)]
 
 ### 题目概述：
 Tag : 「动态规划」、「记忆化搜索」、「递归」

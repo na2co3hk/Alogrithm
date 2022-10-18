@@ -12,3 +12,25 @@ Tag : 「暴力」、「哈希表」
 * -109 <= nums[i] <= 109
 * -109 <= target <= 109
 * 只会存在一个有效答案
+
+### 解法一：暴力
+两层循环遍历数组，第一层搜索第一个数，第二层搜索第二个数，若等于 $target$ 则直接返回两个数的下标
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+               int length = nums.size();
+               for(int i = 0;i<length;++i)
+               {
+                   for(int j =i+1;j<length;++j)
+                   {
+                       if(nums[i]+nums[j]==target)
+                       {
+                            return {i, j};
+                       }
+                   }
+               }
+               return {};
+    }
+};
+```

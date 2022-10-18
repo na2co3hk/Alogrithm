@@ -3,9 +3,12 @@
 ### 题目概述：
 Tag : 「链表」、「高精度运算」
 
-![image](https://user-images.githubusercontent.com/99656524/196447329-03524f3e-ed83-4221-b0b0-d6302eb66b12.png)
+![image](https://user-images.githubusercontent.com/99656524/196448792-437e37ce-0d13-441f-a8b9-b47eb460f074.png)
 
-![image](https://user-images.githubusercontent.com/99656524/196447466-198d905e-7c65-4ebf-99be-5b6bb1cc749b.png)
+![image](https://user-images.githubusercontent.com/99656524/196448865-f8ff3ee8-ba4b-4f20-bec0-3547fb8b8cda.png)
+
+![image](https://user-images.githubusercontent.com/99656524/196448897-fc7c7524-28db-436b-9dfc-9444c7ac6393.png)
+
 
 ### 数据范围
 * 每个链表中的节点数在范围 [1, 100] 内

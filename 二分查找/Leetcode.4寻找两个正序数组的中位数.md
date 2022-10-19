@@ -69,7 +69,7 @@ public:
         int Lmax = 0, Rmin = 0;
         while(l <= r)
         {
-            int C1 = (l + r) / 2;  //C1 + C2 = (m + n + 1) / 2 <==> mid = (l + r) / 2
+            int C1 = (l + r) / 2;  //C1 + C2 = (m + n + 1) / 2 <==> mid = (l + r + 1) / 2 （+1把取中间数的方式改成上取整）
             int C2 = (m + n + 1) / 2 - C1;
 
             int Lmax1 = (C1 == 0 ? INT_MIN : nums1[C1-1]);

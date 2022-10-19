@@ -25,4 +25,26 @@ Tag : 「动态规划」、「记忆化搜索」、「递归」
 
 * $isnum$ 代表选不选数字， $True$ 代表上一位选的是数字， $False$ 表示上一位选的不是数字
 
+除此之外，本题还需要一个集合表示之前选取的状态，我们用一个整形 $mask$ 表示（二进制表示集合），利用位运算标记该数字是否被选过
+
+python代码：
+```py
+class Solution:
+    def countSpecialNumbers(self, n: int) -> int:
+        s = str(n) #先转换为字符串
+        @cache #记忆化搜索
+        def f(i: int, mask: int, is_limit: bool, is_num: bool) -> int: #mask用二进制表示集合，表示每一位是否填了数字（可有可无看情况）
+            if i == len(s): #递归到最深层
+                return int(is_num)
+            res = 0
+            if not is_num:  # 可以跳过当前数位
+                res = f(i + 1, mask, False, False)
+            up = int(s[i]) if is_limit else 9 #表示能填的数字的上界（如果上一位填的已经被限制，这一位的上界也是收限制的，如果没被限制上界则是9）
+            for d in range(0 if is_num else 1, up + 1):  # 枚举要填入的数字 d（如果上一位填入过数字，则下界可以从0开始，没填过数字就必须从1开始）
+                if mask >> d & 1 == 0:  # d 不在 mask 中
+                    res += f(i + 1, mask | (1 << d), is_limit and d == up, True) #若d为上界（已经被限制），则下一位上界也受限制 
+            return res
+        return f(0, 0, True, False)
+```
+
 

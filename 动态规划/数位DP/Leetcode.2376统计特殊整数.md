@@ -47,4 +47,27 @@ class Solution:
         return f(0, 0, True, False)
 ```
 
+C++代码：
+```cpp
+class Solution {
+public:
+    int countSpecialNumbers(int n) {
+        auto s = to_string(n);
+        int m = s.length(), dp[m][1 << 10];
+        memset(dp, -1, sizeof(dp));
+        function<int(int, int, bool, bool)> f = [&](int i, int mask, bool is_limit, bool is_num) -> int {
+            if (i == m) return is_num;
+            if (!is_limit && is_num && dp[i][mask] >= 0) return dp[i][mask];
+            int res = 0;
+            if (!is_num) res = f(i + 1, mask, false, false); // 可以跳过当前数位
+            for (int d = 1 - is_num, up = is_limit ? s[i] - '0' : 9; d <= up; ++d) // 枚举要填入的数字 d
+                if ((mask >> d & 1) == 0) // d 不在 mask 中
+                    res += f(i + 1, mask | (1 << d), is_limit && d == up, true);
+            if (!is_limit && is_num) dp[i][mask] = res;
+            return res;
+        };
+        return f(0, 0, true, false);
+    }
+};
+```
 

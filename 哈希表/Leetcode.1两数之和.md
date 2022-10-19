@@ -8,9 +8,9 @@ Tag : 「暴力」、「哈希表」
 ![image](https://user-images.githubusercontent.com/99656524/196387802-7284024f-4430-4bae-b4dd-6819efb66a87.png)
 
 ### 数据范围
-* 2 <= nums.length <= 104
-* -109 <= nums[i] <= 109
-* -109 <= target <= 109
+* $2 <= nums.length <= 10^4$
+* $-10^9 <= nums[i] <= 10^9$
+* $-10^9 <= target <= 10^9$
 * 只会存在一个有效答案
 
 ### 解法一：暴力

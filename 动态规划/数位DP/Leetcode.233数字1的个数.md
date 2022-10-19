@@ -26,3 +26,26 @@ Tag : 「动态规划」、「记忆化搜索」、「递归」
 * $isnum$ 代表选不选数字， $True$ 代表上一位选的是数字， $False$ 表示上一位选的不是数字
 
 而在本题中，上一位是否是数字并不影响，因为上一位不选数字则代表少选一位数，所以这个限制可以去除
+
+除此之外，我们还需要一个 $cnt$ 记录上一个状态1出现的个数
+
+python代码：
+```py
+# 给定一个整数 n，计算所有小于等于 n 的非负整数中数字 1 出现的个数。
+class Solution:
+    def countDigitOne(self, n: int) -> int:
+        s = str(n)
+
+        @cache
+        def f(i: int, is_limit: bool, cnt: int) -> int:
+            if i == len(s):
+                return cnt
+            res = 0
+            up = int(s[i]) if is_limit else 9
+            for d in range(up + 1):
+                k = 1 if d == 1 else 0
+                res += f(i + 1, is_limit and d == up, cnt + k)
+            return res
+
+        return f(0, True, 0)
+```

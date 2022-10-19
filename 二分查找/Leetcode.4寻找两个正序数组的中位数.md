@@ -59,6 +59,35 @@ $Lmax = 3$， $Rmin = 4$
 
 C++代码：
 ```cpp
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        int m = nums2.size();
+        if(n > m)return findMedianSortedArrays(nums2, nums1); //对数组元素个数小的进行二分，加快速度
+        int l = 0,r = n;
+        int Lmax = 0, Rmin = 0;
+        while(l <= r)
+        {
+            int C1 = (l + r) / 2;  //C1 + C2 = (m + n + 1) / 2 <==> mid = (l + r) / 2
+            int C2 = (m + n + 1) / 2 - C1;
 
+            int Lmax1 = (C1 == 0 ? INT_MIN : nums1[C1-1]);
+            int Lmax2 = (C2 == 0 ? INT_MIN : nums2[C2-1]);
+            int Rmin1 = (C1 == n ? INT_MAX : nums1[C1]);
+            int Rmin2 = (C2 == m ? INT_MAX : nums2[C2]);
 
+            if(Lmax1 <= Rmin2)//在同一个数组是必定小于的，因此要交叉对比
+            {
+                Lmax = max(Lmax1, Lmax2);
+                Rmin = min(Rmin1, Rmin2);
+                l = C1 + 1;
+            } 
+            else r = C1 - 1;
+            
+        }
+
+        return (m + n) % 2 == 0 ? (Lmax + Rmin) / 2.0 : Lmax; //如果是偶数，则返回最值的平均值，如果是奇数就返回任意一个即可
+    }
+};
 ```

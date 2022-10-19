@@ -52,5 +52,33 @@ class Solution:
         return s[begin:begin + m]
 ```
 
+* 时间复杂度： $O(n^2)$ 动态规划的状态总数为 $O(n^2)$，每次转移 $O(1)$
+* 空间复杂度： $O(n^2)$ ，常数级变量
+
 ### 解法二：中心扩散法
 我们枚举回文串的中心，向两边扩散，返回最大长度
+```py
+class Solution:
+    def expend(self, s: str, l: int, r:int):
+        n = len(s)
+        while l >= 0 and r < n and s[l]==s[r]:
+            l -= 1
+            r += 1
+        return l + 1, r - 1
+
+    def longestPalindrome(self, s: str) -> str:
+        n, begin, end = len(s), 0, 0
+        for i in range(n):
+            odd1, odd2 = self.expend(s, i, i)#记录回文串中心只有一个字符的情况（奇数长度）
+            even1, even2 = self.expend(s, i, i+1)#记录回文串中心有两个字符的情况（偶数长度）
+            if odd2 - odd1 > end - begin: #更新长度
+                begin, end = odd1, odd2
+            if even2 - even1 > end - begin:#更新长度
+                begin, end = even1, even2
+        return s[begin:end+1]
+```
+
+* 时间复杂度： $O(n^2)$
+* 空间复杂度： $O(1)$ 
+
+

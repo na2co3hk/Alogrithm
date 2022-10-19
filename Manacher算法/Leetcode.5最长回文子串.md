@@ -57,6 +57,7 @@ class Solution:
 
 ### 解法二：中心扩散法
 我们枚举回文串的中心，向两边扩散，返回最大长度
+python代码：
 ```py
 class Solution:
     def expend(self, s: str, l: int, r:int):

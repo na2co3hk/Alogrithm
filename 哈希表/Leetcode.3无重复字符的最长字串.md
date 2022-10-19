@@ -8,7 +8,7 @@ Tag : 「滑动窗口」、「哈希表」
 ![image](https://user-images.githubusercontent.com/99656524/196451285-80a12bb3-e870-491b-8475-aeec7a0bab64.png)
 
 ### 数据范围
-* 0 <= s.length <= 5 * 104
+* $0 <= s.length <= 5 * 10^4$
 * s 由英文字母、数字、符号和空格组成
 
 ### 解法一：哈希表

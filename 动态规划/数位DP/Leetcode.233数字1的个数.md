@@ -11,7 +11,7 @@ Tag : 「动态规划」、「记忆化搜索」、「递归」
 ### 解法一：记忆化搜索
 属于是数位DP的一道入门题
 
-关于数位DP可以根据这题的文件夹找到其他相关的题
+关于[数位DP](https://github.com/na2co3hk/Alogrithm/tree/main/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8DDP)可以根据这题的文件夹找到其他相关的题
 
 题目给定一个界限 $n$ 求小于等于n的所有整数中1的出现次数
 
@@ -41,10 +41,10 @@ class Solution:
             if i == len(s):
                 return cnt
             res = 0
-            up = int(s[i]) if is_limit else 9
-            for d in range(up + 1):
-                k = 1 if d == 1 else 0
-                res += f(i + 1, is_limit and d == up, cnt + k)
+            up = int(s[i]) if is_limit else 9 
+            for d in range(up + 1): #枚举到上界
+                k = 1 if d == 1 else 0 #若选取的数字为1，则要记录选取次数
+                res += f(i + 1, is_limit and d == up, cnt + k) #cnt + k 代表上一个状态选取1的次数+当前状态是否选1
             return res
 
         return f(0, True, 0)

@@ -68,14 +68,14 @@ public:
             int Lmax2 = (C2 == 0 ? INT_MIN : nums2[C2-1]);
             int Rmin1 = (C1 == n ? INT_MAX : nums1[C1]);
             int Rmin2 = (C2 == m ? INT_MAX : nums2[C2]);
-
-            if(Lmax1 <= Rmin2)//在同一个数组是必定小于的，因此要交叉对比
+            //在同一个数组是必定小于的，因此要交叉对比
+            if(Lmax1 <= Rmin2) 
             {
                 Lmax = max(Lmax1, Lmax2);
                 Rmin = min(Rmin1, Rmin2);
                 l = C1 + 1;
             } 
-            else r = C1 - 1;
+            else r = C1 - 1; //第一个数组的最大值大于第二个数组的最小值，C1向左调整，C2向右调整
             
         }
 

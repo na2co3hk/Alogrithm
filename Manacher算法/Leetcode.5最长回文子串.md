@@ -117,10 +117,10 @@ public:
         for(int i = 1;i <= cnt;i++)
         {
             if (i < mx) p[i] = min(p[pos * 2 - i], mx - i);//根据对称中心得出状态转移方程
-            else p[i] = 1;
+            else p[i] = 1; //超过半径了就没有对称了
             while (ss[i + p[i]] == ss[i - p[i]]) p[i]++;//中心扩散
-            if (mx < i + p[i]) mx = i + p[i], pos = i;//最大长度更新，回文中心也更新
-            if (p[i] - 1 > ans)//保存最大答案和起点
+            if (mx < i + p[i]) mx = i + p[i], pos = i;//最大半径更新，回文中心也更新
+            if (p[i] - 1 > ans)//保存最大长度和起点
             {
               ans = p[i] - 1;
               start = (i - ans) / 2;

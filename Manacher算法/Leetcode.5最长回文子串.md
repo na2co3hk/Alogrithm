@@ -96,6 +96,7 @@ if (i < mx) p[i] = min(p[pos * 2 - i], mx - i);
 else p[i] = 1;
 ```
 * 最后，只需要正常遍历字符串进行中心扩散的时候遇到更长的回文串时更新中心和半径即可
+* 
 C++代码：
 ```cpp
 class Solution {

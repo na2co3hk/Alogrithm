@@ -1,4 +1,4 @@
-### 原题链接 -- [[4. 寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)]
+### 原题链接 -- [[901. 股票价格跨度](https://leetcode.cn/problems/online-stock-span/)]
 
 ### 题目概述：
 Tag : 「单调栈」

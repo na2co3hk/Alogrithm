@@ -35,7 +35,7 @@ public:
         vector<int>dp(n + 1);
         for(int i = 1;i <= n;i++)
         {
-            int j = upper_bound(jobs.begin(), jobs.begin() + i - 1, jobs[i - 1][0], [&](int st, const vector<int> &job) -> bool {
+            int j = upper_bound(jobs.begin(), jobs.begin() + i - 1, jobs[i - 1][0], [&](int st, const vector<int> &job) -> bool { //属于>类型，-1变成<=类型
                 return st < job[1];
             }) - jobs.begin(); //upper_bound返回的是迭代器，减去jobs.begin()可以返回一个int，也就是返回下标
             dp[i] = max(dp[i-1], dp[j] + jobs[i-1][2]);

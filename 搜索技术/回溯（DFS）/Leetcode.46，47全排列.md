@@ -48,6 +48,7 @@ public:
 * 空间复杂度： $O(n)$ 
 
 下面是II题代码，和I题区别就是可以出现了重复数字，必须进行判重操作
+
 C++代码
 ```cpp
 class Solution {
@@ -86,6 +87,45 @@ public:
         sort(nums.begin(), nums.end());
         backtrack(nums, ans, 0, perm);
         return ans;
+    }
+};
+```
+* 时间复杂度： $O(n*n!)$ 
+* 空间复杂度： $O(n)$ 
+
+### 解法二：Next_permulation
+在STL的算法中有Next_permulation函数可以求下一个排列，直到全部逆序为止，但是使用前需要先排序，这里直接实现了Next_permulation函数
+
+C++代码：
+```cpp
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ret;
+        sort(begin(nums), end(nums));
+        do {
+            ret.emplace_back(nums);
+        } while (Next_permutation(nums));
+        return ret;
+    }
+
+    bool Next_permutation(vector<int>& nums)
+    {
+        int n = nums.size();
+        for(int i = n - 1;i>=0;i--)
+        {
+            for(int j = n - 1;j>i;j--)
+            {
+                if(nums[j]>nums[i])
+                {
+                    swap(nums[j],nums[i]);
+                    reverse(nums.begin()+i+1,nums.end());
+                    return true;
+                }
+            }
+        }
+        reverse(nums.begin(),nums.end());
+        return false;
     }
 };
 ```

@@ -46,3 +46,46 @@ public:
 ```
 * 时间复杂度： $O(n*n!)$ 
 * 空间复杂度： $O(n)$ 
+
+下面是II题代码，和I题区别就是可以出现了重复数字，必须进行判重操作
+C++代码
+```cpp
+class Solution {
+    vector<int> vis;//判重
+    
+    /* vis[i]：当前数字是否出现过
+    * 如果当前数字与前一个数字相同（nums[i] == nums[i - 1]），
+    * 并且前一个数字还没有出现的话（vis[i - 1] == false），
+    * 那么就不能选择当前数字（continue），
+    * 如果前面的数字已经出现过（vis[i] == true），则可以
+    * 选择当前数字
+    */
+
+public:
+    void backtrack(vector<int>& nums, vector<vector<int>>& ans, int idx, vector<int>& perm) {
+        if (idx == nums.size()) {
+            ans.emplace_back(perm);
+            return;
+        }
+        for (int i = 0; i < (int)nums.size(); ++i) {
+            if (vis[i] || (i > 0 && nums[i] == nums[i - 1] && !vis[i - 1])) {
+                continue;
+            }
+            perm.emplace_back(nums[i]);
+            vis[i] = 1;
+            backtrack(nums, ans, idx + 1, perm);
+            vis[i] = 0;
+            perm.pop_back();
+        }
+    }
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> perm;
+        vis.resize(nums.size());
+        sort(nums.begin(), nums.end());
+        backtrack(nums, ans, 0, perm);
+        return ans;
+    }
+};
+```

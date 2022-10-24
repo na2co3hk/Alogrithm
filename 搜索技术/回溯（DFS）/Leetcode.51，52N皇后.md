@@ -58,3 +58,45 @@ public:
 * 时间复杂度： $O(n!)$ 
 * 空间复杂度： $O(n)$ 
 
+ N皇后 II代码（和1差不多，就放一起了）：
+ ```cpp
+ class Solution {
+public:
+    bool col[20];//列
+    bool dg[20];//对角线
+    bool fdg[20];//反对角线
+    int totalNQueens(int n) {
+         vector<string> path(n,string(n,'.'));
+         int count = 0;
+         dfs(0,n,path,count);
+         return count;
+    }
+
+    void dfs(int u,int n,vector<string>&path,int &count)
+    {
+        if(u==n)
+        {
+            count++;
+            return ;
+        }
+
+        for(int i = 0;i < n;i++)
+        {
+            if(!col[i]&&!dg[u + i]&&!fdg[n - u + i])
+            {
+                path[u][i] = 'Q';
+                col[i] = dg[u + i] = fdg[n - u + i] = true;
+                dfs(u + 1,n,path,count);
+                col[i] = dg[u + i] = fdg[n - u + i] = false;
+                path[u][i] = '.';
+            }
+        }
+
+    }   
+};
+    
+ ```
+* 时间复杂度： $O(n!)$ 
+* 空间复杂度： $O(n)$ 
+
+ 

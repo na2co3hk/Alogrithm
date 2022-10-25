@@ -1,6 +1,6 @@
 # Alogrithm
 
-画客的leetcode、Acwing、codeforces刷题笔记！
+画客的leetcode、Acwing、codeforces刷题笔记
 
 所有题目都在对应相关tag的文件夹里
 

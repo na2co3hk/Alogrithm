@@ -1,4 +1,4 @@
-### 原题链接 -- [752. 打开转盘锁](https://leetcode.cn/problems/open-the-lock/)]
+### 原题链接 -- [[752. 打开转盘锁](https://leetcode.cn/problems/open-the-lock/)]
 
 ### 题目概述：
 Tag : 「广度优先搜索」

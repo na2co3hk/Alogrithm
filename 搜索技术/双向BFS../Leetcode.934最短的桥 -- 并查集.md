@@ -25,12 +25,12 @@ class Solution:
         def getIdx(x, y): //得到一维索引
             return x * n + y
 
-        def find(x): //查找
+        def find(x): #查找
             if p[x] != x:
                 p[x] = find(p[x])
             return p[x]
 
-        def union(x, y): //链接
+        def union(x, y): #链接
             p[find(x)] = p[find(y)]
 
         def update(d, cur, other):
@@ -43,11 +43,11 @@ class Solution:
                     nidx = getIdx(nx, ny)
                     if nx < 0 or nx >= n or ny < 0 or ny >= n:
                         continue
-                    if nidx in cur: //这条路走过
+                    if nidx in cur: #这条路走过
                         continue
                     if nidx in other:
-                        return step + 1 + other.get(nidx) //如果在其中一个集合中出现另一个集合探索的点，就将已经探索的步数（step）和另一个岛探索的步数（other.get(nidx))
-                    d.put([nx, ny])  //加起来，就是最短距离
+                        return step + 1 + other.get(nidx) #如果在其中一个集合中出现另一个集合探索的点，就将已经探索的步数（step）和另一个岛探索的步数（other.get(nidx))
+                    d.put([nx, ny])  #加起来，就是最短距离
                     cur[nidx] = step + 1
                 sz -= 1
             return -1

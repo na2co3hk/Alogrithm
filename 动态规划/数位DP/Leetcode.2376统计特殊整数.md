@@ -59,7 +59,7 @@ public:
         memset(dp, -1, sizeof(dp));
         function<int(int, int, bool, bool)> f = [&](int i, int mask, bool is_limit, bool is_num) -> int {
             if (i == m) return is_num;
-            if (!is_limit && is_num && dp[i][mask] >= 0) return dp[i][mask];
+            if (!is_limit && is_num && dp[i][mask] >= 0) return dp[i][mask];//记忆化搜索
             int res = 0;
             if (!is_num) res = f(i + 1, mask, false, false); // 可以跳过当前数位
             for (int d = 1 - is_num, up = is_limit ? s[i] - '0' : 9; d <= up; ++d) // 枚举要填入的数字 d

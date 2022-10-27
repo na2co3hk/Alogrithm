@@ -31,13 +31,13 @@ int main()
     for (int i = 1;i <= n; i++) scanf("%d", &a[i]), s[i] = s[i - 1] + a[i];
     
     memset(dp, 0, sizeof dp);
-    for(int len = 2;len <= n; len++)
+    for(int len = 2;len <= n; len++) //枚举区间长度
     {
-        for(int i = 1;i + len - 1 <= n;i++)
+        for(int i = 1;i + len - 1 <= n;i++) //枚举区间左端点
         {
-            int l = i,r = len + i - 1;
-            dp[l][r] = 0x3f3f3f3f;
-            for(int k = l;k <= r;k++)
+            int l = i,r = len + i - 1; //区间右端点
+            dp[l][r] = 0x3f3f3f3f; //初始化成最大值
+            for(int k = l;k <= r;k++) //枚举合并的分割点
             {
                 dp[l][r] = min(dp[l][r],dp[l][k]+dp[k+1][r]+s[r]-s[l-1]);
             }
@@ -47,3 +47,5 @@ int main()
     return 0;
 }
 ```
+* 时间复杂度： $O(n^2)$ 可能有错
+* 空间复杂度： $O(n^2)$ 

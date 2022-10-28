@@ -20,3 +20,24 @@ arr[i] * (i-L) * (R-i)
 $$
 
 需要注意的是，要是有相同元素的最小元素的话，边界的设定就要小于等于最小值了，这样才能防止重复计算。接下来就是解释如何高效计算左右边界
+
+![image](https://user-images.githubusercontent.com/99656524/198478175-1ca041b6-85b5-44f9-b81f-ac206ae351ab.png)（图片来自灵神）
+
+我们可以用一个单调栈维护左右区间。循环变量为区间右边界，当弹出一个元素的时候，弹出值的左边界即是弹出之后的栈顶这样就可以在弹出元素时候顺便计算贡献，然后再将贡献求和得出答案
+
+py代码：
+```py
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        arr.append(-1)
+        ans, st = 0, [-1]  # 哨兵
+        for r, x in enumerate(arr):
+            # 也可以 while arr[st[-1]] > x，效率略高一点
+            while len(st) > 1 and arr[st[-1]] >= x:
+                i = st.pop()
+                ans += arr[i] * (i - st[-1]) * (r - i)  # 累加贡献
+            st.append(r)
+        return ans % (10 ** 9 + 7)
+```
+* 时间复杂度： $O(n)$
+* 空间复杂度： $O(n)$ ,使用栈

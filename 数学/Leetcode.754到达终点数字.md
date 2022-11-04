@@ -28,3 +28,7 @@ class Solution:
 
 ### 优化
 因为需要找到 $n(n+1) >= target$ ，我们可以将他转化为一个二次函数，并用求根公式获取n的最值
+
+![image](https://user-images.githubusercontent.com/99656524/199868440-8b5bf63c-d533-4f76-8bad-db1fcf4c0b0a.png)
+
+

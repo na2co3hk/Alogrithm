@@ -18,7 +18,7 @@ C++代码：
 ```cpp
 const int MOD = 1e9 + 7;
 
-const auto ios_sync_off = []() {
+const auto ios_sync_off = []() { //优化输入输出时间
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);

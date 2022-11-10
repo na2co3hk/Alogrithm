@@ -42,7 +42,7 @@ class Solution:
 * 时间复杂度： $O(n)$
 * 空间复杂度： $O(n)$ ,使用栈
 
-两次遍历版本补充：
+两次遍历版本补充：（2022年11月10日更新）
 ```py
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:

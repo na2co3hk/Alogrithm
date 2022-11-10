@@ -41,3 +41,22 @@ class Solution:
 ```
 * 时间复杂度： $O(n)$
 * 空间复杂度： $O(n)$ ,使用栈
+
+两次遍历版本补充：
+```py
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        n = len(arr)
+        left, right = [-1]*n, [n]*n
+        stk = []
+        for i, x in enumerate(arr):
+            while stk and arr[stk[-1]] >= x:
+                right[stk.pop()] = i
+            if stk: left[i] = stk[-1]
+            stk.append(i)
+        
+        ans = 0
+        for i, (x, l, r) in enumerate(zip(arr, left, right)):
+            ans += x*(i-l)*(r-i)
+        return ans % (10**9 + 7)
+```

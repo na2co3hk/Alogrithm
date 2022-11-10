@@ -36,30 +36,30 @@ class Solution:
                 if c == '@':
                     d = deque([(i, j, 0)])
                     dist[(i, j, 0)] = 0
-                elif 'a' <= c <= 'z':
+                elif 'a' <= c <= 'z': #统计钥匙总数
                     cnt += 1
         while d:
             x, y, cur = d.popleft()
-            step = dist[(x, y, cur)]
+            step = dist[(x, y, cur)] #右值为dict[键值]，左值为val
             for di in dirs:
                 nx, ny = x + di[0], y + di[1]
-                if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                if nx < 0 or nx >= n or ny < 0 or ny >= m: #超出边界
                     continue
                 c = g[nx][ny]
-                if c == '#':
+                if c == '#':  #障碍
                     continue
-                if 'A' <= c <= 'Z' and (cur >> (ord(c) - ord('A')) & 1) == 0:
+                if 'A' <= c <= 'Z' and (cur >> (ord(c) - ord('A')) & 1) == 0: #锁，没找到钥匙就跳过（验证，右移/）
                     continue
-                ncur = cur
-                if 'a' <= c <= 'z':
-                    ncur |= (1 << (ord(c) - ord('a')))
-                if ncur == (1 << cnt) - 1:
-                    return step + 1
-                if step + 1 >= dist[(nx, ny, ncur)]:
+                ncur = cur  #取上一个状态
+                if 'a' <= c <= 'z':  #钥匙，加到集合里（左移*）
+                    ncur |= (1 << (ord(c) - ord('a'))) 
+                if ncur == (1 << cnt) - 1: #钥匙都找齐了
+                    return step + 1 
+                if step + 1 >= dist[(nx, ny, ncur)]: #上一步的步数比下一步的步数还大，说明不是最短路径
                     continue
                 dist[(nx, ny, ncur)] = step + 1
                 d.append((nx, ny, ncur))
         return -1
 ```
-* 时间复杂度： $O(n * m * 2^k)$
+* 时间复杂度： $O(n * m * 2^k)$，n * m个状态，再加上2进制枚举
 * 空间复杂度： $O(n * m * 2^k)$

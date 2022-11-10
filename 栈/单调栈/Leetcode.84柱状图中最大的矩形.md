@@ -33,7 +33,7 @@ class Solution:
         return ans
 ```
 
-C++代码：（一次遍历，即出栈就遍历）
+C++代码：（一次遍历，枚举区间右端点，即出栈就遍历）
 ```cpp
 class Solution {
 public:

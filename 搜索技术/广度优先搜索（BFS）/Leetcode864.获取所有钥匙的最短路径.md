@@ -61,5 +61,5 @@ class Solution:
                 d.append((nx, ny, ncur))
         return -1
 ```
-* 时间复杂度： $O(n*m*2^k)$
-* 空间复杂度： $O(n*m*2^k)$
+* 时间复杂度： $O(n * m * 2^k)$
+* 空间复杂度： $O(n * m * 2^k)$

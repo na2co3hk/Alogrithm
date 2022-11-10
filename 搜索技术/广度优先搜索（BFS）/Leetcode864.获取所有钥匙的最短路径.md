@@ -9,3 +9,11 @@ Tag : 「广度优先搜索」、「状态压缩」
 
 ![image](https://user-images.githubusercontent.com/99656524/200996318-3f412870-392e-4dc7-8af6-8f2b6c2a7c16.png)
 
+### 数据范围
+* $m == grid.length$
+* $n == grid[i].length$
+* $1 <= m, n <= 30$
+* grid[i][j] 只含有 '.', '#', '@', 'a'-'f' 以及 'A'-'F'
+* 钥匙的数目范围是 [1, 6] 
+* 每个钥匙都对应一个 不同 的字母
+* 每个钥匙正好打开一个对应的锁

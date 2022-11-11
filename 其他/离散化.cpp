@@ -19,7 +19,7 @@ void Display1()//静态数组
 	sort(c, c + n);
 	int i = unique(c, c + n) - c;
 	for (int i = 0; i < n; i++)
-		L[i] = lower_bound(c, c + n, a[i]) - c + 1;
+		L[i] = lower_bound(c, c + n, a[i]) - c + 1; //查询
 }
 
 void Display2()//动态数组
@@ -38,7 +38,7 @@ void Display2()//动态数组
 	sort(c.begin(), c.end());
 	c.erase(unique(c.begin(), c.end()), c.end());
 	vector<int>L(n);
-	for (int i = 0; i < n; i++)L[i] = lower_bound(c.begin(), c.end(), a[i]) - c.begin() + 1;
+	for (int i = 0; i < n; i++)L[i] = lower_bound(c.begin(), c.end(), a[i]) - c.begin() + 1; //查询
 }
 
 int main()

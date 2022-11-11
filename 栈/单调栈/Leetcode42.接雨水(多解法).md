@@ -1,4 +1,4 @@
-### 原题链接 -- [[42. 接雨水](https://leetcode.cn/problems/largest-rectangle-in-histogram/)]
+### 原题链接 -- [[42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/)]
 
 ### 题目概述：
 Tag : 「单调栈」、「计算贡献」、「动态规划」、「双指针」

@@ -12,7 +12,7 @@ using namespace std;
 int find(int x) {
         if (r[x] != x) r[x] = find(r[x]);
         return r[x];
-
+}
 //按秩合并极短模板
 void Union(int x,int y){
   int rx=find(x);

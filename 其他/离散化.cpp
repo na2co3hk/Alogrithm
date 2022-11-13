@@ -8,6 +8,7 @@ using namespace std;
 //排序是为了方便二分查找，排序后去重比较方便，去重是为了建立X与Y的一一映射，不去重则会导致一个X可以对应多个Y（可以不去重，每次查询X只返回特定的Y就行了，但是这样时间复杂度更慢，所以最好还是去重）。
 //离散化后只需要开大小为X的个数的数组了（这里是6个）
 //时间复杂度：O（nlogn），为排序和二分查找的时间复杂度
+//松离散
 void Display1()//静态数组
 {
 	int n = 6;
@@ -48,5 +49,37 @@ int main()
 	cout.tie(nullptr);
 	Display1();
 	Display2();
+	return 0;
+}
+
+//--------------------------------------------------------------
+//紧离散
+#include<bits/stdc++.h>
+#include<unordered_map>
+#include<unordered_set>
+
+using namespace std;
+
+unordered_map<int, int> discrete(vector<int> &a)
+{
+	unordered_map<int, int>map;
+	unordered_set<int>set;
+	for (auto x : a)set.insert(x);
+	vector<int>c;
+	for (auto x : set)c.push_back(x);
+	sort(c.begin(), c.end());
+	int idx = 0;
+	for (int x : c)map[x] = ++idx;
+	return map;
+}
+
+int main()
+{
+	vector<int>a = { -4,123,64,848,3,-132 };
+	for (auto x : a)cout << x << ' ';
+	cout << endl;
+	unordered_map<int ,int> d = discrete(a);
+	for (auto l : d)cout << l.second << ' ';
+
 	return 0;
 }

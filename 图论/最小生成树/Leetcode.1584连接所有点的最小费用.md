@@ -9,7 +9,7 @@ Tag : 「最小生成树」
 
 ![image](https://user-images.githubusercontent.com/99656524/201503592-4f9b34bd-44f0-4315-ac6c-e715242c0aa6.png)
 
-### 解法一：克鲁斯卡尔算法
+### 解法一：Kruskal算法
 本题是最小生成树的入门题，可以当作一个模板来看
 
 题目大意为找出链接所有点的最小代价，十分类似于最小生成树的性质，生成树的性质如下：
@@ -120,4 +120,66 @@ public:
 * 时间复杂度： $O(n^2logn)$，一般 Kruskal 是 $O(mlogm)$ 的算法，但本题中 $m=n^2$ 
 * 空间复杂度： $O(n^2)$ , $O(n)$ 并查集， $O(n^2)$ 建图
 
-### 解法二：普利姆算法
+### 解法二：Prim算法
+普里姆算法也是求最小生成树的一种算法
+
+普里姆在求最小生生成树的时候将点分为两类，一类是最小生成树已经包括的点（A类点），另一类是没有包括最小生成树的点（B类点），每次在A类点中找寻权重最小的边，并将边的另一个点从B类点中加入A类点，随后继续从A类点中寻找权重最小的边，直到点的数量 == 边的数量 -1 后结束。
+
+C++代码:
+```cpp
+//定义边
+class Edge
+{
+public:
+	int start;//起始结点
+	int end;//终止结点
+	int cost;//权重
+	Edge(int start, int end, int cost) :start(start), end(end), cost(cost) {}
+};
+bool operator<(Edge a,Edge b)
+{
+    return a.cost>b.cost;
+}
+//Prim Algorithm
+//链接所有点的最小花费
+class Solution
+{
+public:
+	int minCostConnectPoints(vector<vector<int>>points)
+	{
+		int n = points.size();
+		priority_queue<Edge>edges;
+		vector<bool>visited(n,0);//判断点是否已经被查询过了
+		for (int j = 1; j < n; j++)
+		{
+			int cost = abs(points[0][0] - points[j][0]) + abs(points[0][1] - points[j][1]);
+			edges.emplace(Edge(0,j,cost));
+		}
+		int res = 0;
+		int count = n - 1;
+		visited[0] = true;
+		while (!edges.empty() && count > 0)
+		{
+			Edge e = edges.top();
+            edges.pop();
+			if (!visited[e.end])
+			{
+				res += e.cost;
+				visited[e.end] = true;
+				for (int j = 0; j < n; j++)
+				{
+					if (!visited[j])
+					{
+						int distance = abs(points[e.end][0] - points[j][0]) + abs(points[e.end][1] - points[j][1]);
+						edges.emplace(Edge(e.end, j, distance));
+					}
+				}
+				count--;
+			}
+		}
+		return res;
+	 }
+};
+```
+* 时间复杂度： $O(n)$
+* 空间复杂度： $O(n)$ ,使用哈希表

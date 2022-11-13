@@ -1,4 +1,4 @@
-### 原题链接 -- [[864. 获取所有钥匙的最短路径](https://leetcode.cn/problems/shortest-path-to-get-all-keys/)]
+### 原题链接 -- [[207. 课程表](https://leetcode.cn/problems/course-schedule/)]
 
 ### 题目概述：
 Tag : 「广度优先搜索」、「状态压缩」

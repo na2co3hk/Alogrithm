@@ -21,8 +21,8 @@ int main()
 {
 	vector<int>nums = { 1, 2, 3, 4, 5 };
 	//前缀和输入
-	//for (int i = 1;i <= n; i++) scanf("%d", &a[i]), s[i] = s[i - 1] + a[i];//输入时前缀和
-	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //数组下标从0开始时
+	//for (int i = 1;i <= n; i++) scanf("%d", &a[i]), s[i] = s[i - 1] + a[i];//输入时前缀和，数组下标从1开始
+	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //数组下标从0开始时，-1相当于和下标做对齐
 	for (auto x : sum)cout << x << ' ';
 	cout << endl;
 	cout << range(1, 5); //[1,5]的区间和
@@ -72,10 +72,11 @@ int main()
 
 using namespace std;
 
+const int N = 10010;
 int n = 5;
-vector<int>d(n + 1, 0);
+vector<int>d(N, 0); //add操作时会超过n+1个数，所以尽量开大点
 
-//给[l,r]区间中加上val
+//给[l,r]区间中的每个数都加上val
 void add(int l, int r, int val)
 {
 	d[l] += val;
@@ -86,6 +87,15 @@ int main()
 {
 	vector<int>nums = { 0, 1, 2, 3, 4, 5 };//数组从下标1开始存储
 	for (int i = 1; i <= n; i++)d[i] = nums[i] - nums[i - 1];
-	for (auto x : d)cout << x << ' ';
+	for (int i = 1; i <= n; i++)cout << d[i] << ' ';
+	cout << endl;
+	add(1, 5, 4);//区间[1,5]的每个数都+3
+	for (int i = 1; i <= n; i++)
+	{
+		nums[i] = d[i] + nums[i - 1];
+		cout << nums[i] << ' ';
+	}
 	return 0;
 }
+
+//二维差分

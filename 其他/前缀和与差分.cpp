@@ -1,4 +1,9 @@
 //前缀和：存储前n个数的和的数组
+//差分：存储相邻两项的差的数组
+
+//前缀和和差分的关系：前缀和与差分互为逆运算
+
+//一维前缀和
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -17,7 +22,7 @@ int main()
 	vector<int>nums = { 1, 2, 3, 4, 5 };
 	//前缀和输入
 	//for (int i = 1;i <= n; i++) scanf("%d", &a[i]), s[i] = s[i - 1] + a[i];//输入时前缀和
-	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //下标从1开始
+	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //数组下标从0开始时
 	for (auto x : sum)cout << x << ' ';
 	cout << endl;
 	cout << range(1, 5); //[1,5]的区间和
@@ -48,7 +53,7 @@ int main()
 	{
             cin >> a[i][j];
             //二维前缀和输入
-            //非输入时sum[i][j] = sum[i][j-1] + sum[i-1][j] - sum[i-1][j-1] + a[i-1][j-1];
+            //数组下标从0开始时sum[i][j] = sum[i][j-1] + sum[i-1][j] - sum[i-1][j-1] + a[i-1][j-1];
             sum[i][j] = sum[i][j - 1] + sum[i - 1][j] - sum[i - 1][j - 1] + a[i][j]; 
         }
     }
@@ -59,4 +64,28 @@ int main()
         cout << range(x1, y1, x2, y2) << endl;
     }
     return 0;
+}
+
+//-----------------------------------------------------------
+//一维差分
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n = 5;
+vector<int>d(n + 1, 0);
+
+//给[l,r]区间中加上val
+void add(int l, int r, int val)
+{
+	d[l] += val;
+	d[r + 1] -= val;
+}
+
+int main()
+{
+	vector<int>nums = { 0, 1, 2, 3, 4, 5 };//数组从下标1开始存储
+	for (int i = 1; i <= n; i++)d[i] = nums[i] - nums[i - 1];
+	for (auto x : d)cout << x << ' ';
+	return 0;
 }

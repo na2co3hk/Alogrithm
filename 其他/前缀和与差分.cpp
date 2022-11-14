@@ -92,10 +92,54 @@ int main()
 	add(1, 5, 4);//区间[1,5]的每个数都+3
 	for (int i = 1; i <= n; i++)
 	{
-		nums[i] = d[i] + nums[i - 1];
+		nums[i] = d[i] + nums[i - 1]; //前缀和得到原数组
 		cout << nums[i] << ' ';
 	}
 	return 0;
 }
 
 //二维差分
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int N = 10100;
+
+int n, m, q;
+int nums[N][N], d[N][N];
+
+void add(int x1, int y1, int x2, int y2, int val)
+{
+    d[x1][y1] += val;
+    d[x1][y2 + 1] -= val;
+    d[x2 + 1][y1] -= val;
+    d[x2 + 1][y2 + 1] += val;
+}
+int main() {
+    cin >> n >> m >> q;
+    for (int i = 1; i <= n; i++) 
+    {
+        for (int j = 1; j <= m; j++)
+        {
+            int x;
+            cin >> nums[i][j];
+            add(i, j, i, j, nums[i][j]);
+        }
+    }
+    while (q--)
+    {
+        int x1, y1, x2, y2, val;
+        cin >> x1 >> y1 >> x2 >> y2 >> val;
+        add(x1, y1, x2, y2, val);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= m; j++)
+        {
+            nums[i][j] += d[i - 1][j] + d[i][j - 1] - d[i - 1][j - 1]; //二维前缀和
+            cout << nums[i][j] << ' ';
+        }
+        puts("");
+    }
+    return 0;
+}

@@ -35,7 +35,7 @@ int n, m, q;
 
 int a[N][N], sum[N][N];
 
-int range(int x1, int y1, int x2, int y2) //求二维区间和[x1,y1]到[x2,y2]的前缀和(x1 < x2 and y1 < y2)
+int range(int x1, int y1, int x2, int y2) //求二维区间和[x1,y1](左上角)到[x2,y2](右下角)的前缀和(x1 < x2 and y1 < y2)
 {
     return sum[x2][y2] - sum[x1 - 1][y2] - sum[x2][y1 - 1] + sum[x1 - 1][y1 - 1];
 }

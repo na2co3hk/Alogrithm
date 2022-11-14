@@ -34,21 +34,26 @@ const int N = 1010;
 int n, m, q;
 
 int a[N][N], sum[N][N];
-//求二维区间和[x1,y1]到[x2,y2]的前缀和(x1 < x2 and y1 < y2)
-int range(int x1, int y1, int x2, int y2) {
+
+int range(int x1, int y1, int x2, int y2) //求二维区间和[x1,y1]到[x2,y2]的前缀和(x1 < x2 and y1 < y2)
+{
     return sum[x2][y2] - sum[x1 - 1][y2] - sum[x2][y1 - 1] + sum[x1 - 1][y1 - 1];
 }
-int main() {
+int main() 
+{
     cin >> n >> m >> q;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= m; j++)
+	{
             cin >> a[i][j];
             //二维前缀和输入
             //非输入时sum[i][j] = sum[i][j-1] + sum[i-1][j] - sum[i-1][j-1] + a[i-1][j-1];
             sum[i][j] = sum[i][j - 1] + sum[i - 1][j] - sum[i - 1][j - 1] + a[i][j]; 
         }
     }
-    while (q--) {
+    while (q--)
+    {
         int x1, y1, x2, y2;
         cin >> x1 >> y1 >> x2 >> y2;
         cout << range(x1, y1, x2, y2) << endl;

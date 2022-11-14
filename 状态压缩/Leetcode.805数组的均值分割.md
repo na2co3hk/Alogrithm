@@ -48,4 +48,31 @@ $$
 sum1 * n / cnt1 = tot
 $$
 
-也就是将数组的全部元素乘以 $n$ 后，找到一个数组的和为 $tot$，也就是 $nums[i] * n - tot = 0$。最后，我们可以用
+也就是将数组的全部元素乘以 $n$ 后，找到一个数组的和为 $tot$的子数组，我们再将所有元素减去 $tot$ 也就是 $nums[i] * n - tot = 0$，我们就将问题转化为找一个和为0的子数组了。我们将数组分为两半，枚举前半段，若出现和为0的情况，就说明找到了，否则将数组和放进集合中。枚举后半段，若出现和为0的情况或者 $-sum$ 出现在集合中就说明找到了.
+
+python代码：
+```py
+class Solution:
+    def splitArraySameAverage(self, nums: List[int]) -> bool:
+        n = len(nums)
+        if n == 1:
+            return False
+        s = sum(nums)
+        for i, v in enumerate(nums):
+            nums[i] = v * n - s
+        mid = n >> 1
+        vis = set()
+        for i in range(1, 1 << mid):
+            t = sum(v for j, v in enumerate(nums[:mid]) if i >> j & 1)
+            if t == 0:
+                return True
+            vis.add(t)
+        for i in range(1, 1 << (n - mid)):
+            t = sum(v for j, v in enumerate(nums[mid:]) if i >> j & 1)
+            if t == 0 or (i != (1 << (n - mid)) - 1 and -t in vis):
+                return True
+        return False
+```
+* 时间复杂度： $O(2^N)$，其中 $N = n/2$
+* 空间复杂度： $O(2^N)$ 
+

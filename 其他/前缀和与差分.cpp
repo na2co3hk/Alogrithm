@@ -136,7 +136,7 @@ int main() {
     {
         for (int j = 1; j <= m; j++)
         {
-            nums[i][j] = d[i - 1][j] + d[i][j - 1] - d[i - 1][j - 1] + nums[i][j]; //二维前缀和
+            nums[i][j] += d[i - 1][j] + d[i][j - 1] - d[i - 1][j - 1]; //二维前缀和
             cout << nums[i][j] << ' ';
         }
         puts("");

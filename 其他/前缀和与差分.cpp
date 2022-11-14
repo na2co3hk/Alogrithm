@@ -22,7 +22,7 @@ int main()
 	vector<int>nums = { 1, 2, 3, 4, 5 };
 	//前缀和输入
 	//for (int i = 1;i <= n; i++) scanf("%d", &a[i]), s[i] = s[i - 1] + a[i];//输入时前缀和，数组下标从1开始
-	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //数组下标从0开始时，-1相当于和下标做对齐
+	for (int i = 1; i <= n; i++)sum[i] = sum[i - 1] + nums[i - 1]; //数组下标从0开始时，i-1相当于和下标做对齐
 	for (auto x : sum)cout << x << ' ';
 	cout << endl;
 	cout << range(1, 5); //[1,5]的区间和

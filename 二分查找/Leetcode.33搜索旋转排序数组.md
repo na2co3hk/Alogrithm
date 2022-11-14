@@ -35,24 +35,24 @@ public:
         {
             int mid = l + (r - l)/2;
             if(nums[mid]==target)return mid;
-            if(nums[0]<=nums[mid])
+            if(nums[0]<=nums[mid]) //mid在旋转区间
             {
-                if(nums[mid]>target && nums[0]<=target)
+                if(nums[mid]>target && nums[0]<=target) //target在有序区间
                 {
                     r = mid - 1;
                 }
-                else
+                else //target在无序区间
                 {
                     l = mid + 1;
                 }
             }
-            else
+            else //mid在正常升序区间
             {
-                if(nums[mid]<target && nums[n - 1]>=target)
+                if(nums[mid]<target && nums[n - 1]>=target) //target在有序区间
                 {
                     l = mid + 1;
                 }
-                else
+                else //target在无序区间
                 {
                     r = mid - 1;
                 }

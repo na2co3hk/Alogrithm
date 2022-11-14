@@ -12,7 +12,21 @@ Tag : 「二分查找」
 * $-10^9 <= target <= 10^9$
 
 ### 解法一：二分查找
-题目明示用二分查找，然后就是二分查找找上下界的问题，具体看二分查找模板
+题目明示用二分查找，然后就是二分查找找上下界的问题，部分语言可以用自带的二分查找函数，具体看二分查找模板
+
+C++代码：
+```cpp
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n = nums.size();
+        int l = lower_bound(nums.begin(), nums.end(), target) - nums.begin(); //>=x
+        int r = upper_bound(nums.begin(), nums.end(), target) - nums.begin(); // >x
+        if(l == n || nums[l]!=target)return {-1, -1};
+        else return {l, r-1};// >=x and <=x
+    }
+};
+```
 
 python代码：
 ```py

@@ -39,3 +39,27 @@ class Solution:
 ```
 * 时间复杂度： $O(n)$
 * 空间复杂度： $O(n)$ ,使用栈
+
+### 解法二：双指针
+这题我们还可以用双指针的做法，我们用左右两个相向指针同时维护数组的前缀最大值和后缀最大值，来作为“容器”的两边，然后再在两个边之中选最小的作为盛水量。（注意“容器”底部本身也有高度，所以要减去）
+
+C++代码:
+```cpp
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size(), ans = 0;
+        int l = 0, r = n - 1;
+        int pre = 0, suf = 0;
+        while(l <= r)
+        {
+            pre = max(pre, height[l]);
+            suf = max(suf ,height[r]);
+            ans += pre < suf ? pre - height[l++] : suf - height[r--];
+        }
+        return ans;
+    }
+};
+```
+* 时间复杂度： $O(n)$
+* 空间复杂度： $O(1)$

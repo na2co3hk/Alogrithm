@@ -15,3 +15,22 @@ Tag : 「双指针」
 ### 解法一：双指针
 这题解法和接雨水差不多，这个相当于是弱化版的接雨水。
 
+我们用两个指针来模拟接雨水的“容器”的左右两边，要想接到的雨水多，根据面积公式，就要长和宽都要大，我们可以每次先记录最大面积，优化较小的那条边，然后用双向双指针不断缩小规模。
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n = height.size();
+        int l = 0, r = n-1, res = 0;
+        while(l < r)
+        {
+            res = height[l] < height[r] ? max(res, (r - l)*height[l++]) : max(res, (r - l)*height[r--]);
+        }
+        return res;
+    }
+};
+```
+* 时间复杂度： $O(n)$
+* 空间复杂度： $O(1)$ 

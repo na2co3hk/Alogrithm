@@ -55,5 +55,5 @@ class Solution(object):
         else:
             return [a,b-1] #-1变成 <= x的最大下标
 ```
-* 时间复杂度： $O(log)$
+* 时间复杂度： $O(logn)$
 * 空间复杂度： $O(1)$

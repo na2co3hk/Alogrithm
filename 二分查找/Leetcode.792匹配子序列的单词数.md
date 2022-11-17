@@ -39,5 +39,5 @@ public:
     }
 };
 ```
-* 时间复杂度： $O(m * size * logn)$,其中 $size$ 为每个 $word$ 的长度
+* 时间复杂度： $O(m * size * logn)$,其中 $size$ 为每个 $word$ 的长度, $m$ 为字典的长度
 * 空间复杂度： $O()$

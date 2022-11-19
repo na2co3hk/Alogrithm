@@ -9,6 +9,7 @@ const int N = 10010;
 
 //邻接矩阵
 int g[N][N];
+
 //邻接表
 int h[N], e[N], ne[N], w[N], idx = 0;
 void add(int x, int y, int c)//x->y的权重c

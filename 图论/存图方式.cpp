@@ -47,8 +47,8 @@ int main()
 
 	//邻接表
 	for (int i = 0; i < 5; i++)add(a[i][0], a[i][1], a[i][2]);
-  
-	dfs(a[0][0]);
+        dfs(a[0][0]);
+	
 	memset(st, false, sizeof st);
 	//图的BFS
 	queue<int>q;

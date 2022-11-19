@@ -49,9 +49,9 @@ int main()
 	//邻接矩阵
 	for (int i = 0; i < 5; i++)
 	{
-		int x = a[i][0];
-		int y = a[i][1];
-		int dist = a[i][2];
+		int x = a[i][0]; //起点
+		int y = a[i][1]; //终点
+		int dist = a[i][2]; //权重
 		g[x][y] = dist;
 	}
 
@@ -66,12 +66,12 @@ int main()
 	q.push(1);
 	while (!q.empty())
 	{
-		int t = q.front();
+		int t = q.front(); //t是起点
 		q.pop();
 		for (int i = h[t]; ~i; i = ne[i])
 		{
-			int j = e[i];
-			int c = w[i];
+			int j = e[i]; //j是终点
+			int c = w[i]; //c为x->y的权重
 			if (!st[j])
 			{
 				st[j] = true;

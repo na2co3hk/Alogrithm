@@ -18,6 +18,14 @@ void add(int x, int y, int c)//x->y的权重c
 	h[x] = idx++;	
 }
 
+class Edge //类存图
+{
+	int x; //起点
+	int y; //终点
+	int c; //权重
+	Edge(int x, int y, int c) :x(x), y(y), c(c) {}
+};
+
 bool st[N];//检查是否走过这个点
 
 //图的DFS

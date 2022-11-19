@@ -45,7 +45,7 @@ void dfs(int u) //u为起点
 
 int main()
 {
-	memset(g, 0x3f, sizeof g);
+	memset(g, 0x3f, sizeof g); //全部初始化为无穷大，代表达不到这个点
 	memset(h, -1, sizeof h); //非常重要！！！！！！！
 	//邻接矩阵
 	for (int i = 0; i < 5; i++)

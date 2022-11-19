@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 #include<cstdlib>
-#include<queue>
 
 //邻接表头节点一定要赋值成-1！！！
 using namespace std;

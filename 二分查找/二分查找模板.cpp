@@ -13,7 +13,7 @@ int n = 5;
 int upperbound(int* a,int x)
 {
 	int l = 0;
-	int r = n - 1;
+	int r = n;
 	while (l < r) //结束条件，结束的时候搜索区间的元素必须为0
 	{
 		int mid = l + (r - l) / 2;
@@ -27,7 +27,7 @@ int upperbound(int* a,int x)
 int lowerbound(int* a, int x)
 {
 	int l = 0;
-	int r = n - 1;
+	int r = n;
 	while (l < r) //结束条件，结束的时候搜索区间的元素必须为0
 	{
 		int mid = l + (r - l) / 2;

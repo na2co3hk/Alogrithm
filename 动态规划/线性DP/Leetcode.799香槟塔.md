@@ -26,8 +26,8 @@ class Solution:
             for j in range(i + 1):
                 if f[i][j] <= 1: #没有溢出
                     continue
-                f[i + 1][j] += (f[i][j] - 1) / 2 
-                f[i + 1][j + 1] += (f[i][j] - 1) / 2
+                f[i + 1][j] += (f[i][j] - 1) / 2 #溢出到左边的杯子
+                f[i + 1][j + 1] += (f[i][j] - 1) / 2 #溢出到右边的杯子
         return min(f[n][m], 1)
 ```
 * 时间复杂度： $O(n^2)$

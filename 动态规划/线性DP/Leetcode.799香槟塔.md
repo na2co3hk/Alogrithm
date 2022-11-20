@@ -24,9 +24,9 @@ class Solution:
         f[0][0] = k
         for i in range(n + 1):
             for j in range(i + 1):
-                if f[i][j] <= 1:
+                if f[i][j] <= 1: #没有溢出
                     continue
-                f[i + 1][j] += (f[i][j] - 1) / 2
+                f[i + 1][j] += (f[i][j] - 1) / 2 
                 f[i + 1][j + 1] += (f[i][j] - 1) / 2
         return min(f[n][m], 1)
 ```

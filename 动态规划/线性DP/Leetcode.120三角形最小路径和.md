@@ -1,4 +1,4 @@
-### 原题链接 -- [[120. 三角形最小路径和](https://leetcode.cn/problems/triangle/solution/san-jiao-xing-zui-xiao-lu-jing-he-by-leetcode-solu/)]
+### 原题链接 -- [[120. 三角形最小路径和](https://leetcode.cn/problems/triangle/)]
 
 ### 题目概述：
 Tag : 「动态规划」

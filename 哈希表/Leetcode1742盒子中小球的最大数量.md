@@ -35,5 +35,5 @@ public:
     }
 };
 ```
-* 时间复杂度： $O(logn)$
-* 空间复杂度： $O(1)$
+* 时间复杂度： $O(NloghighLimit)$，其中 $N = highLimit - lowLimit + 1$ 
+* 空间复杂度： $O(loghighLimit)$

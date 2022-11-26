@@ -20,6 +20,14 @@ void add(int x, int y, int c)//x->y的权重c
 	h[x] = idx++;	
 }
 
+vector<vector<pair<int, int>>> g(n);
+for (auto &e: edges)  // C++的邻接表可以用vector
+{
+	int u = e[0], v = e[1], cnt = e[2];
+        g[u].emplace_back(v, cnt + 1);
+        g[v].emplace_back(u, cnt + 1); // 建图
+}
+
 class Edge //类存图
 {
 	int x; //起点

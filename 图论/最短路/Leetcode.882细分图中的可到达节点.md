@@ -20,7 +20,7 @@ Tag : 「最短路径」、「图」
 题目大意为，在原本的无相图上加上权重（新的点），问总共能达到多少个点。那么这题为什么要用到最短路算法呢？我们将图细分之后，相当于我们只能向各个点走 $maxMoves$ 步，原题目就抽象成了从0开始走 $maxMoves$ 步的最短路径题。我们可以用Dijkstra算法来解决最短路径类的题目，我们这里用到的是朴素的Dijkstra算法。Dijkstra算法的基本思想是贪心，即每一步都只走最小权重的边，然后将边的终点加入进来，重复上述过程。计算出各个点的最短路之后，我们还需要统计答案，在本题中，若边能到达的权重小于 $maxMoves$ 步，也要加到答案里。
 
 C++代码：
-```
+```cpp
 class Solution {
 public:
     int reachableNodes(vector<vector<int>>& edges, int maxMoves, int n) {
@@ -68,6 +68,6 @@ public:
         return ans;
     }
 };
-```py
+```
 * 时间复杂度： $O(n^2)$，其中n是点的个数
 * 空间复杂度： $O(n^2)$

@@ -20,8 +20,9 @@ void add(int x, int y, int c)//x->y的权重c
 	h[x] = idx++;	
 }
 
+// C++的邻接表可以用vector
 vector<vector<pair<int, int>>> g(n);
-for (auto &e: edges)  // C++的邻接表可以用vector
+for (auto &e: edges)  
 {
 	int u = e[0], v = e[1], cnt = e[2];
         g[u].emplace_back(v, cnt + 1);

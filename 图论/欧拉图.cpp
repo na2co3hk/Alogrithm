@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//欧拉图判断
 //解决“一笔画问题”
 //欧拉图都是无相图
 using ll = long long;

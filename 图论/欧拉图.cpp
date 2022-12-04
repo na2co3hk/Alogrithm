@@ -9,6 +9,7 @@ const int N = 1010;
 int n, m;
 int p[N], deg[N];//并查集、点的度数
 
+//用并查集判断图是否连通
 void init(int n)
 {
 	for (int i = 1; i <= n; i++)p[i] = i;

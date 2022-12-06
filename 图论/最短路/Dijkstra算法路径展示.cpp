@@ -26,7 +26,7 @@ void dijkstra(int u)
 			if (!st[y] && dist[y] > dist[x] + g[x][y])
 			{
 				dist[y] = dist[x] + g[x][y];
-				path[y] = x;
+				path[y] = x; //统计经过路径
 			}
 		}
 	}
@@ -46,13 +46,13 @@ void print(int u)
 		int p = i;
 		while (path[p] != -1)
 		{
-			stk.push(p);
+			stk.push(p); //将路径放入栈中
 			p = path[p];
 		}
 		cout << u << "-->" << i << ' ';
 		cout << "dist = " << dist[i] << ' ';
 		cout << u;
-		while (!stk.empty())
+		while (!stk.empty()) //一个个弹出代表正序路径
 		{
 			cout << "-->" << stk.top();
 			stk.pop();

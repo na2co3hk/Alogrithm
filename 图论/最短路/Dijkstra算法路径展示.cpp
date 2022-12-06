@@ -41,7 +41,7 @@ void dijkstra(int u)
 void print(int u)
 {
 	stack<int>stk;
-	for (int i = 2; i <= n; i++)
+	for (int i = 1; i <= n; i++)
 	{
 		int p = i;
 		while (path[p] != -1)

@@ -53,9 +53,9 @@ int main()
         cin>>v[i]>>w[i];
     }
     int dp[MAX+1][MAX+1];
-    for(int i = 1;i <= N;i++)
+    for(int i = 1;i <= N;i++)//枚举物品数量
     {
-        for(int j = 0;j <= V;j++)
+        for(int j = 0;j <= V;j++)//枚举背包重量
         {
             if(j<v[i])//背包剩余重量不够
             {

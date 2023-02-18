@@ -29,5 +29,45 @@ $dfs(i-1, V-v[i]) + w[i]代表选择第i件物品时不超过V能得到的最大
 上述的式子也可以转换成用数组的递推式
 
 $$
-   f[i,V] = max(f[i-1][V], f[i-1][V-v[i] + w[i]) ( i = N,N-1...2,1 )
+   f[i,V] = max(f[i-1][V], f[i-1][V-v[i]] + w[i]) ( i = N,N-1...2,1 )
 $$
+
+接着就要考虑递推式的初始化问题，但是这题求的是最大值，可以直接全部默认初始化为0
+
+最后用循环枚举各种状态，最终的状态为 f[N][V]
+
+C++代码：
+```cpp
+#include<iostream>
+
+using namespace std;
+const int MAX = 1010;
+int N,V;//物品数量，背包容量
+int v[MAX],w[MAX];//体积，价值
+
+int main()
+{
+    cin>>N>>V;
+    for(int i = 1;i <= N;i++)
+    {
+        cin>>v[i]>>w[i];
+    }
+    int dp[MAX+1][MAX+1];
+    for(int i = 1;i <= N;i++)
+    {
+        for(int j = 0;j <= V;j++)
+        {
+            if(j<v[i])//背包剩余重量不够
+            {
+                dp[i][j]=dp[i-1][j];//只能不选
+            }
+            else
+            {
+                dp[i][j] = max(dp[i-1][j],dp[i-1][j-v[i]]+w[i]);
+            }
+        }
+    }
+    cout<<dp[N][V];
+    return 0;
+}
+```

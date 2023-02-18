@@ -14,6 +14,23 @@ Tag : 「数学」
 
 C++代码：
 ```cpp
+class Solution {
+public:
+    bool isGoodArray(vector<int>& nums) {
+        int d = nums[0];
+        for(auto x : nums) //对整个数组求gcd
+        {
+            d = gcd(d, x);
+            if(d == 1)break;
+        }
+        return d == 1;
+    }
 
-
+    int gcd(int a,int b)
+    {
+        return b ? gcd(b, a % b) : a;
+    }
+};
 ```
+* 时间复杂度： $O(n + logm)$ ，其中n和m分别为数组元素和数组最大值于在每次求两个数的最大公约数时其中一个数保持单调不增，所以求总的公约数的时间复杂度为 $O(logm)$。
+* 空间复杂度： $O(1)$ 

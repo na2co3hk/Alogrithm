@@ -25,7 +25,7 @@ public:
         for(int j = 0;j < n;j++)
         {
             auto l = lower_bound(nums.begin(), nums.begin()+j, lower-nums[j]); //>=
-            auto r = upper_bound(nums.begin(), nums.begin()+j, upper-nums[j]); //>
+            auto r = upper_bound(nums.begin(), nums.begin()+j, upper-nums[j]); //>  大于变小于等于-1即可
             ans += r - l; //一般求范围内数的和都是r - l + 1，但是这里的r是>的范围，所以不用 + 1
         }
         return ans;

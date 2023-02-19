@@ -78,3 +78,28 @@ int main()
 $$
   f[j] = max(f[j], f[j-v[i]]+w[i])
 $$
+
+这里还没完，如果只是单纯地改动这地方的话其实是错误的。从原本的表达式我们可以知道f[i]用的是上一层，也就是f[i-1]的数据，我们必须要保证f[i]就是由f[i-1]转移而来。因为f[j]和f[j-v[i]]都是在第i次循环计算出来的，会导致我们得到的是f[i][j-v[i]]而并非f[i-1][j-v[i]]，因此我们需要将第二重循环从后往前遍历，改变一下递推的顺序，保证数据是从上一层的状态转移过来的
+
+```cpp
+#include<iostream>
+#include<vector>
+
+using namespace std;
+const int MAX = 1010;
+int N,V;//物品数量，背包容量
+int v[MAX],w[MAX];//体积，价值
+
+int main()
+{
+    cin >>N>>V;
+    for(int i = 1;i <= N;i++)cin >> v[i] >> w[i];
+    int dp[MAX] = { 0 };
+    for(int i = 1;i <= N;i++)
+    {
+        for(int j = V;j >= v[i];j--)dp[j] = max(dp[j], dp[j-v[i]]+w[i]);
+    }
+    cout << dp[V] << endl; 
+    return 0;
+}
+```

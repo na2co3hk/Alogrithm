@@ -43,4 +43,21 @@ public:
 * 空间复杂度： $O(n)$
 
 ### 优化（原地修改）
-直接用原数组充当答案数组即可，代码和上面的代码类似，可以将空间复杂度降低为 $ O(1) $
+直接用原数组充当答案数组即可，代码和上面的代码类似，可以将空间复杂度降低为 $ O(1) $  [代码来源](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/)
+
+python代码：
+```py
+class Solution:
+    def maxValue(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        for j in range(1, n): # 初始化第一行
+            grid[0][j] += grid[0][j - 1]
+        for i in range(1, m): # 初始化第一列
+            grid[i][0] += grid[i - 1][0]
+        for i in range(1, m):
+            for j in range(1, n):
+                grid[i][j] += max(grid[i][j - 1], grid[i - 1][j])
+        return grid[-1][-1]
+```
+* 时间复杂度： $O(nm)$ 
+* 空间复杂度： $O(1)$

@@ -43,7 +43,7 @@ public:
 * 空间复杂度： $O(n)$
 
 ### 优化（原地修改）
-直接用原数组充当答案数组即可，代码和上面的代码类似，可以将空间复杂度降低为 $ O(1) $  
+直接用原数组充当答案数组即可，代码和上面的代码类似，可以将空间复杂度降低为 $O(1)$   
 [代码来源](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/)
 
 python代码：

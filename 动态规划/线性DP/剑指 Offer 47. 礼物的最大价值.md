@@ -8,3 +8,39 @@ Tag : 「动态规划」
 ### 数据范围
 0 < grid.length <= 200
 0 < grid[0].length <= 200
+
+### 解法一：动态规划
+这道题有点类似于数字三角形，也是用动态规划来解决。由于每次只能向右或者向下移动，那么当我们走到最右边或者最下面的时候，就只能从一种方向转移，我们可以先将这些状态先预处理出来，再根据从上边转移和从左边转移两种状态得出状态转移方程。
+
+$$
+  f[i][j] = max(f[i-1][j], f[i][j-1]) + grid[i][j]
+$$
+
+其中 $f[i][j]$ 表示长和宽分别为i和j时礼物的最大价值。
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int maxValue(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<int>>f(m, vector<int>(n));
+        f[0][0] = grid[0][0];
+        for(int i = 1;i < m;i++)f[i][0] = f[i-1][0] + grid[i][0];
+        for(int j = 1;j < n;j++)f[0][j] = f[0][j-1] + grid[0][j];
+        for(int i = 1;i < m;i++)
+        {
+            for(int j = 1;j < n;j++)
+            {
+                f[i][j] = max(f[i-1][j], f[i][j-1]) + grid[i][j];
+            }
+        }
+        return f[m-1][n-1];
+    }
+};
+```
+* 时间复杂度： $O(nm)$ 
+* 空间复杂度： $O(n)$
+
+### 优化（原地修改）
+直接用原数组充当答案数组即可，代码和上面的代码类似，可以将空间复杂度降低为 $ O(1) $

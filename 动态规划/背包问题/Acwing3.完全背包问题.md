@@ -5,6 +5,7 @@ Tag : 「动态规划」
 
 ![image](https://user-images.githubusercontent.com/99656524/225010647-ad6ebb64-acf9-430b-a974-b7e79d489f12.png)
 
+### 解法一:动态规划
 背包问题是一个系列，01背包是这个系列的第一章，其他的[在这里](https://github.com/na2co3hk/Alogrithm/tree/main/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98)
 
 下面是正题
@@ -18,3 +19,50 @@ $$
 $$
 
 其中dfs(i, V)代表第i件物品选k次，重量不超过V的价值
+
+然后转换成递推式：
+
+$$
+   f[i,V] = max(f[i-1][V], f[i-1][V - k * v[i]] + k * w[i]) ( i = N,N-1...2,1 )
+$$
+
+这是最基本的表达式，显然这样的表达式要进行三重循环来枚举，效率显然是不够的，我们可以试着像01背包那样优化一下，将数组降为一维，这样就可以得出一个基本的表达式
+
+$$
+   dp[j]=max(dp[j],dp[j-k * v[i]]+k * w[i]); 
+$$
+
+C++代码：
+```cpp
+#include<iostream>
+using namespace std;
+
+const int maxn = 1010;
+int n,m;
+int v[maxn],w[maxn];
+int dp[maxn];
+
+int main()
+{
+    cin>>n>>m;
+    for(int i = 1;i<=n;i++)
+    {
+        cin>>v[i]>>w[i];
+    }
+
+    for(int i = 1;i<=n;i++)
+    {
+        for(int j = 0;j<=m;j++)
+        {
+            for(int k = 0;k*v[i]<=j;k++ )
+            {
+                dp[j]=max(dp[j],dp[j-k*v[i]]+k*w[i]);
+            }
+        }
+    }
+    cout<<dp[m];
+    return 0;
+}
+```
+* 时间复杂度： $O(NV)$ 可能有错
+* 空间复杂度： $O(NV)$ 

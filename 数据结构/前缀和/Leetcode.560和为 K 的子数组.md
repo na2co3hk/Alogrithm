@@ -13,6 +13,10 @@ Tag : 「前缀和」、「哈希表」
 ### 解法一：前缀和 + 哈希表
 题目可以转换为求区间和为k的子数组数目，而区间和可以转换为两个前缀和的差，而两个数的差等于目标值，是不是听着有点耳熟？没有的话就赶紧复习一下[两数之和](https://github.com/na2co3hk/Alogrithm/blob/main/%E5%93%88%E5%B8%8C%E8%A1%A8/Leetcode.1%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.md)吧！
 
+对于疑点：这个是chatgpt的回答，刚好帮我解惑了
+![image](https://user-images.githubusercontent.com/99656524/225883295-e04f2df6-1264-44cc-8dcd-c29fadeebff3.png)
+
+
 C++代码：
 ```cpp
 class Solution {

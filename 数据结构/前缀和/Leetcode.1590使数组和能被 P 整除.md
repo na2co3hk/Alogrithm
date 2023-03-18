@@ -27,5 +27,39 @@ $$
 回到本题，设x为整个数组的和，y为被删掉子数组的和，根据上面的定义不难发现x和y同余，而y又是一段区间的区间和，用前缀和表示为
 
 $$
-    s[r] - s[l - 1] =  x (mod p)
+    s[r] - s[l] ≡  x (mod p)
 $$
+
+移项得
+
+$$
+   s[r] - x ≡ s[l] (mod p)
+$$
+
+这样就将问题转换再次转换为两数之和了。
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int minSubarray(vector<int>& nums, int p) {
+        int n = nums.size();
+        vector<int>pre(n + 1);
+        for(int i = 1;i <= n;i++)pre[i] = (pre[i-1] + nums[i-1]) % p;//先mod p一遍，再+p，就可以将负数转换为正数，并且还可以防止溢出
+        int x = pre[n];
+        if(x == 0)return 0;//移除空子数组
+        int ans = INT_MAX;
+        unordered_map<int, int>hash;
+        for(int i = 0;i <= n;i++)
+        {
+            auto it = hash.find((pre[i] - x + p) % p);
+            if(it != hash.end())ans = min(ans, i - it->second);
+            hash[pre[i]] = i;
+        }
+        return ans < n ? ans : -1;
+    }
+};
+```
+* 时间复杂度： $O(n)$ 
+* 空间复杂度： $O(n)$ 
+

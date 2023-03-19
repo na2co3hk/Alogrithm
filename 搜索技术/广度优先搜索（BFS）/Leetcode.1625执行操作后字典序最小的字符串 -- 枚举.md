@@ -19,7 +19,7 @@ Tag : 「广度优先搜索」
 ### 解法一：广度优先搜索
 题目大意为将原数组进行若干次加数和旋转操作后得到一个字典序最小的字符串。对于这种题目，一般都是搜索出所有的答案后取最小的即可。
 
-代码来源：[ylb](https://leetcode.cn/problems/lexicographically-smallest-string-after-applying-operations/solution/python3javacgo-yi-ti-shuang-jie-bfs-bao-xl8n2/)
+代码来源：[ylb大佬](https://leetcode.cn/problems/lexicographically-smallest-string-after-applying-operations/solution/python3javacgo-yi-ti-shuang-jie-bfs-bao-xl8n2/)
 
 C++代码：
 ```cpp

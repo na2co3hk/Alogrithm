@@ -9,7 +9,7 @@ Tag : 「模拟」
 
 ### 数据范围
 * $1 <= commands.length <= 10^4$
-* $commands[i] is one of the values in the list [-2,-1,1,2,3,4,5,6,7,8,9].$
+* commands[i] is one of the values in the list [-2,-1,1,2,3,4,5,6,7,8,9].
 * $0 <= obstacles.length <= 10^4$
 * $-3 * 10^4 <= xi, yi <= 3 * 10^4$
 * 答案保证小于 231

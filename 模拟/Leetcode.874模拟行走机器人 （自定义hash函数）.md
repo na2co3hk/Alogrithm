@@ -18,6 +18,7 @@ Tag : 「模拟」
 按照题意模拟走的每一步即可，注意C++中的unordered_set并不支持pair的比较，需要自己定义hash函数
 
 附上一点set和unordered_set的区别:（源自chatgpt）
+
 ![image](https://user-images.githubusercontent.com/99656524/226379906-57ed9e0d-644d-4db2-a089-0394db57e0a5.png)
 
 

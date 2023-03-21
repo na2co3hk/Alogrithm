@@ -1,4 +1,4 @@
-### 原题链接 -- [[792. 匹配子序列的单词数](https://leetcode.cn/problems/number-of-matching-subsequences/)]
+### 原题链接 -- [[524. 通过删除字母匹配到字典里最长单词](https://leetcode.cn/problems/longest-word-in-dictionary-through-deleting/)]
 
 ### 题目概述：
 Tag : 「二分查找」、「哈希表」

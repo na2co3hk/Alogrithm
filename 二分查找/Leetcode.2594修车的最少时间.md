@@ -53,3 +53,37 @@ public:
 * 时间复杂度： $O(nlog(mc^2))$ ，其中 $n$ 为ranks数组的元素个数， $m$ 为 $ranks$ 的最小值， $c$为为要修车的数目
 * 空间复杂度： $O(1)$
 
+### 优化
+我们看一眼数据，排名只有1-100名，而其中会出现重复的数据，我们用一个计数器记录该排名的出现次数，然后枚举100次，每次在算n的时候乘上排名的出现次数即可
+
+C++代码:
+```cpp
+class Solution {
+public:
+    long long repairCars(vector<int>& ranks, int cars) {
+        int n = ranks.size();
+        vector<int>cnt(101);
+        for(auto r : ranks)cnt[r]++;
+        auto check = [&](long long t)
+        {
+            long long s = 0;
+            for(int i = 1;i <= 100;i++)s += (long long)sqrt(t / i) * cnt[i];
+            return s >= cars;
+        };
+
+        int m = *min_element(ranks.begin(), ranks.end());
+        long long l = 0;
+        long long  r = 1LL * m * cars * cars;
+
+        while(l < r)
+        {
+            long long mid = l + (r - l) / 2;
+            if(check(mid))r = mid;
+            else l = mid + 1;
+        }
+        return l;
+    }
+};
+```
+* 时间复杂度： $O(n + Ulog(mc^2))$ ，其中 $n$ 为ranks数组的元素个数， $U$ 为 $ranks$ 的最大值， $c$为为要修车的数目
+* 空间复杂度： $O(1)$

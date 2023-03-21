@@ -18,3 +18,38 @@ Tag : 「二分查找」
 $$
   t = r * n^2
 $$
+
+其中，n为该工人要修的车的数目，t为工人的工作时长。t是n的一个函数，且t为单调函数，我们不难想到要用二分查找来做。
+
+将式子转化一下就变成了 $n = sqrt(t / r)$ 当所有工人 $n$ 的总和大于 $cars$ 时，代表工人能在t时间内修理大于等于车的数目（若小于则代表在t时间内不能修理数量为 $cars$ 的车），根据二段性不断循环求得等于 $cars$ 的最短修车时间
+
+C++代码：
+```cpp
+class Solution {
+public:
+    long long repairCars(vector<int>& ranks, int cars) {
+        int n = ranks.size();
+        auto check = [&](long long t)
+        {
+            long long s = 0;
+            for(long long r : ranks)s += sqrt(t / r);
+            return s >= cars;
+        };
+
+        int m = *min_element(ranks.begin(), ranks.end());
+        long long l = 0;
+        long long  r = 1LL * m * cars * cars;
+
+        while(l < r)
+        {
+            long long mid = l + (r - l) / 2;
+            if(check(mid))r = mid;
+            else l = mid + 1;
+        }
+        return l;
+    }
+};
+```
+* 时间复杂度： $O(nlogn)$
+* 空间复杂度： $O(1)$
+

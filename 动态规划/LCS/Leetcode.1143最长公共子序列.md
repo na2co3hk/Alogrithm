@@ -12,7 +12,7 @@ Tag : 「动态规划」
 * text1 和 text2 仅由小写英文字符组成。
 
 ### 解法一：动态规划
-
+看注释
 
 C++代码：
 ```cpp
@@ -26,8 +26,8 @@ public:
         {
             for(int j = 1;j <= m;j++)
             {
-                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
-                if(text1[i-1]==text2[j-1])dp[i][j] = max(dp[i][j],dp[i-1][j-1]+1);
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);//只选一个字符，取最大情况
+                if(text1[i-1]==text2[j-1])dp[i][j] = max(dp[i][j],dp[i-1][j-1]+1);//是公共字符
             }
         }
         return dp[n][m];

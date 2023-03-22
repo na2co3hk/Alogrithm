@@ -12,4 +12,28 @@ Tag : 「动态规划」
 * text1 和 text2 仅由小写英文字符组成。
 
 ### 解法一：动态规划
-题目大意和题目的名字一样，找到最长公共子序列，由于子序列中的每个元素只有选和不选两种状态，并且每次的选择都和上次的选择有关，所以可以考虑用动态规划来做。用两重循环去枚举两个字符串，f[i][j]表示第一个字符串以i结尾，第二个字符串以j结尾时的最长公共子序列长度，如果text[i]与text[j]相同，则代表这个字符是两个字符串共有的，可以将上一个状态 + 1。若不同，则考虑
+
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+        vector<vector<int>>dp(n+1,vector<int>(m+1));
+        for(int i = 1;i <= n;i++)
+        {
+            for(int j = 1;j <= m;j++)
+            {
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+                if(text1[i-1]==text2[j-1])dp[i][j] = max(dp[i][j],dp[i-1][j-1]+1);
+            }
+        }
+        return dp[n][m];
+    }
+};
+```
+* 时间复杂度： $O(nm)$ 
+* 空间复杂度： $O(nm)$ 
+

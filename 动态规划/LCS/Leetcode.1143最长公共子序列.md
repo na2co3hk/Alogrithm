@@ -26,7 +26,7 @@ public:
         {
             for(int j = 1;j <= m;j++)
             {
-                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);//代表必然不使用text1[i-1]（但可能使用text2[i-1]）时和必然不使用text2[i-1]（但可能使用text1[i-1]）时的LCS长度
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);//代表必然不使用text2[j-1]（但可能使用text1[i-1]）时和必然不使用text1[i-1]（但可能使用text2[j-1]）时的LCS长度
                 if(text1[i-1]==text2[j-1])dp[i][j] = max(dp[i][j],dp[i-1][j-1]+1);//是公共字符
             }
         }

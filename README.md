@@ -8,7 +8,7 @@
 
 如果一道题目有副标题，就代表是另一种解法（例如：Leetcode.209长度最小的子数组 -- 二分查找.md代表还有一种二分查找的解法）
 
-Leetcode的题按照顺序更新，目前已经更新至 [51. N 皇后]
+Leetcode的题看心情随机更新！
 
 ![9348fdff6ea8bbcffe7ef9fbe7cd1a5](https://user-images.githubusercontent.com/99656524/197372018-eab08753-2622-4a21-958c-7c0ada127122.jpg)
 

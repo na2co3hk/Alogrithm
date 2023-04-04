@@ -40,10 +40,10 @@ public:
                 {
                     for(int h = l;h < r;h++)
                     {
-                        f[l][r][k] = min(f[l][r][k], f[l][h][1] + f[h + 1][r][k - 1]); //将问题分解为子问题
+                        f[l][r][k] = min(f[l][r][k], f[l][h][1] + f[h + 1][r][k - 1]); //将问题分解为子问题，先合成k堆
                     }
                 }
-                f[l][r][1] = f[l][r][K] + s[r] - s[l - 1];
+                f[l][r][1] = f[l][r][K] + s[r] - s[l - 1]; //再将k堆合成1堆
             }
         }
         return f[1][n][1];

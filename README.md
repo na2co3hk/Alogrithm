@@ -2,6 +2,8 @@
 
 画客的leetcode、Acwing、codeforces、洛谷刷题笔记
 
+单纯作为个人复习仓库，不商用
+
 所有题目都在对应相关tag的文件夹里
 
 长期更新中 🤣

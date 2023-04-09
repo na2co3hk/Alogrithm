@@ -29,8 +29,8 @@ class Solution:
             sum[i] = sum[i-1] + nums[i-1]
         for q in queries:
             j = bisect_left(nums, q)
-            area1 = j * q - sum[j]
-            area2 = sum[n] - sum[j] - q * (n - j)
+            area1 = j * q - sum[j] #少的面积
+            area2 = sum[n] - sum[j] - q * (n - j) #多的面积 
             ans.append(area1 + area2)
         return ans
 ```

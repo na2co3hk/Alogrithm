@@ -43,5 +43,35 @@ class Solution:
             p = c - primes[bisect_left(primes, c - p) - 1]
         return True
 ```
+
 * 时间复杂度： $O(nlogMX)$ ，其中n是nums的长度 
 * 空间复杂度： $O(1)$ 
+
+补一个灵神的C++筛质数
+```cpp
+const int MX = 1000;
+vector<int> primes{0}; // 哨兵，避免二分越界
+
+int init = []() {
+    bool np[MX]{};
+    for (int i = 2; i < MX; ++i)
+        if (!np[i]) {
+            primes.push_back(i); // 预处理质数列表
+            for (int j = i; j < MX / i; ++j)
+                np[i * j] = true;
+        }
+    return 0;
+}();
+
+class Solution {
+public:
+    bool primeSubOperation(vector<int> &nums) {
+        int pre = 0;
+        for (int x: nums) {
+            if (x <= pre) return false;
+            pre = x - *--lower_bound(primes.begin(), primes.end(), x - pre);
+        }
+        return true;
+    }
+};
+```

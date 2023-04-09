@@ -19,7 +19,7 @@ Tag : 「前缀和」、「二分查找」
 由于题目中答案和数组顺序无关，我们可以考虑先给数组排个序，然后将数组看成一个柱状图，结合刚才提到的题目大意转换，我们只需要求出组成 $quries[i] * n$ 缺少的面积和多出来的面积即可，而柱状图的总面积可以用前缀和求得，接下来就是考虑一个临界条件，就是如何求多出来的面积，由于已经排好序，我们可以用二分找出大于 $quries[i]$ 的下标来判断哪部分是多出来的。
 
 python代码：
-```
+```py
 class Solution:
     def minOperations(self, nums: List[int], queries: List[int]) -> List[int]:
         n, m = len(nums), len(queries)

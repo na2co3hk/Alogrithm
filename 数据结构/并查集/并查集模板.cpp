@@ -11,19 +11,20 @@ using namespace std;
 //核心代码极短模板
 int r[N];
 
-int find(int x) {
-	if (r[x] != x) r[x] = find(r[x]);
-	return r[x];
+int find(int x)
+{
+   if (r[x] != x) r[x] = find(r[x]);
+   return r[x];
 }
 
 bool connected(int x, int y)//检查是否相连
 {
-	return find(x) == find(y);
+   return find(x) == find(y);
 }
 
 void Union(int x, int y)
 {
-	r[find(x)] = r[find(y)];//根节点
+   r[find(x)] = r[find(y)];//根节点
 }
 
 //按秩合并极短模板

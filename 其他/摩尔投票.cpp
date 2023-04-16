@@ -10,3 +10,35 @@ int majorityElement(vector<int>& nums)
      }
      return can;
 }
+
+//--------------------------------------------------------//
+//更加一般的摩尔投票
+struct node
+{
+    int val;
+    int cnt;
+    node(int val = 0,int cnt = 0):val(val), cnt(cnt) {}
+    node& operator+=(const node& that)
+    {
+        if(val == that.val)cnt += that.cnt;
+        else if(cnt >= that.cnt)cnt -= that.cnt;
+        else 
+        {
+            val = that.val;
+            cnt = that.cnt - cnt;
+        }
+        return *this;
+    }
+};
+int majorityElement(vector<int>& nums) 
+{
+    vector<node>t(nums.size());
+    for(int num : nums)
+    {
+        node a(num, 1);
+        t.push_back(a);
+    }
+    node ans(0, 0);
+    for(auto a : t)ans += a;
+    return ans.val;
+}

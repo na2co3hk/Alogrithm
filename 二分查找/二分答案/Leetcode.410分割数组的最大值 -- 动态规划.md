@@ -34,9 +34,9 @@ public:
         }
         while(l < r)
         {
-            int mid = (l + r) >> 1;
+            int mid = (l + r) >> 1; //先猜一个答案，然后看看分割成多少个数组
             int tmp = 0, cnt = 1;
-            for(auto num : nums)
+            for(auto num : nums) //统计分割成多少个数组
             {
                 tmp += num;
                 if(tmp > mid)

@@ -15,4 +15,34 @@ Tag : 「二分查找」
 * $2 <= m <= position.length$
 
 ### 解法一：二分查找
-一看到最小化最大值或者最大化最小值，就知道是二分答案了。
+一看到最小化最大值或者最大化最小值，就知道是二分答案了。先猜一个磁力，然后看看需要多少个球，看不懂的可以先去看看之前的入门题。
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int maxDistance(vector<int>& position, int m) {
+        int n = position.size();
+        sort(position.begin(), position.end());
+        int l = 1, r = position[n - 1] - position[0];
+        while(l < r)
+        {
+            int mid = l + (r - l + 1) / 2; //猜一个磁力，看看需要最多多少个球
+            int cnt = 1, p = position[0];
+            for(auto c : position) //统计需要多少个球
+            {
+                if(c - p >= mid)
+                {
+                    p = c;
+                    cnt++;
+                }
+            }
+            if(cnt < m)r = mid - 1;
+            else l = mid;
+        }
+        return r;
+    }
+};
+```
+* 时间复杂度： $O(nlog(r - l))$ ，其中 $l$ , $r$ 为上下界
+* 空间复杂度： $O(1)$

@@ -45,7 +45,7 @@ public:
                     cnt++;
                 }
             }
-            if(cnt > m) l = mid + 1;
+            if(cnt > m) l = mid + 1; //求最小化，使用左边界模板
             else r = mid;
         }
         return l;

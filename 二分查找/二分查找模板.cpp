@@ -10,6 +10,7 @@ int n = 5;
 //终止条件：l == r，终止时搜索区间为[l,l)没有元素
 //如果mid不一定出现在数组中，就要用半开区间的搜索
 //寻找第一个大于(>)x的下标(上界)
+//同时也是左边界模板（即找到符合条件的最小值）
 int upperbound(int* a,int x)
 {
 	int l = 0;
@@ -19,6 +20,21 @@ int upperbound(int* a,int x)
 		int mid = l + (r - l) / 2;
 		if (a[mid] > x)r = mid;
 		else l = mid + 1;
+	}
+	return l;
+}
+
+//右边界模板（即找到符合条件的最大值）
+//注意mid里有+1防止死循环
+int upperbound(int* a,int x)
+{
+	int l = 0;
+	int r = n;
+	while (l < r) //结束条件，结束的时候搜索区间的元素必须为0
+	{
+		int mid = l + (r - l + 1) / 2;
+		if (a[mid] < x)r = mid - 1;
+		else l = mid;
 	}
 	return l;
 }

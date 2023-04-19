@@ -26,6 +26,7 @@ int upperbound(int* a,int x)
 
 //右边界模板（即找到符合条件的最大值）
 //注意mid里有+1防止死循环
+//相当于寻找第一个大于等于(<=)x的下标
 int upperbound(int* a,int x)
 {
 	int l = 0;
@@ -33,7 +34,7 @@ int upperbound(int* a,int x)
 	while (l < r) //结束条件，结束的时候搜索区间的元素必须为0
 	{
 		int mid = l + (r - l + 1) / 2;
-		if (a[mid] < x)r = mid - 1;
+		if (a[mid] > x)r = mid - 1;
 		else l = mid;
 	}
 	return l;

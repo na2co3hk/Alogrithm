@@ -27,7 +27,7 @@ int upperbound(int* a,int x)
 //右边界模板（即找到符合条件的最大值）
 //注意mid里有+1防止死循环
 //相当于寻找第一个小于等于(<=)x的下标
-int upperbound(int* a,int x)
+int right_bound(int* a,int x)
 {
 	int l = 0;
 	int r = n;

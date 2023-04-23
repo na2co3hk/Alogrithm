@@ -3,6 +3,11 @@
 const int N = 10010;
 using namespace std;
 
+//最简单离散化
+template <class T> void dedup(vector<T>& v) { sort(v.begin(), v.end()); v.erase(unique(v.begin(), v.end()), v.end()); }
+//后面还要用lower_bound
+x1 = lower_bound(X.begin(), X.end(), x1) - X.begin();
+
 //只关心数据的大小关系，用排名代替原数据进行处理
 //原理：通过建立一个映射数组来存储所有要进行操作的下标X，然后将其排序去重，每次操作X位置元素时用二分法查找X在映射数组中的位置Y。操作X位置元素改为操作Y位置元素。
 //排序是为了方便二分查找，排序后去重比较方便，去重是为了建立X与Y的一一映射，不去重则会导致一个X可以对应多个Y（可以不去重，每次查询X只返回特定的Y就行了，但是这样时间复杂度更慢，所以最好还是去重）。

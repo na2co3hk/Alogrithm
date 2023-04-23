@@ -100,7 +100,7 @@ public:
             if(dfs(sx, sy))r = mid;
             else l = mid + 1;
         }
-        return l > n * m ? -1 : l;
+        return l > n * m ? -1 : l; // 守护者使用卷轴传送小扣，可以把小扣传送到一个无法到达终点的位置
     }
 };
 ```

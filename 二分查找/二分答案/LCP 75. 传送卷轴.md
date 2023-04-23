@@ -79,15 +79,15 @@ public:
         {
             int mid = (l + r) >> 1; //先猜一个最短距离，看看能否到达终点
             vector<vector<bool>>vis(n, vector<bool>(m , false));
-            function<bool(int, int)>dfs = [&](int x, int y)->bool
+            function<bool(int, int)>dfs = [&](int x, int y)->bool 
             {
                 if(x < 0 or x >= n or y < 0 or y >= m or vis[x][y] or maze[x][y] == '#')return false;
                 if(maze[x][y] == 'T')return true;
                 vis[x][y] = true;
                 if(maze[x][y] == '.')
                 {
-                    if(maze[x][m-1-y] != '#' and dis[x][m-1-y] > mid)return false;
-                    if(maze[n-1-x][y] != '#' and dis[n-1-x][y] > mid)return false;
+                    if(maze[x][m-1-y] != '#' and dis[x][m-1-y] > mid)return false; //x1 + x2 = n - 1移项就是传送之后的y值
+                    if(maze[n-1-x][y] != '#' and dis[n-1-x][y] > mid)return false; //y1 + y2 = n - 1移项就是传送之后的x值
                 }
                 for(int i = 0;i < 4;i++)
                 {

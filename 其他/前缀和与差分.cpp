@@ -90,7 +90,7 @@ int main()
 	for (int i = 1; i <= n; i++)d[i] = nums[i] - nums[i - 1];
 	for (int i = 1; i <= n; i++)cout << d[i] << ' ';
 	cout << endl;
-	add(1, 5, 4);//区间[1,5]的每个数都+3
+	add(1, 5, 4);//区间[1,5]的每个数都+4
 	for (int i = 1; i <= n; i++)
 	{
 		nums[i] = d[i] + nums[i - 1]; //前缀和得到原数组

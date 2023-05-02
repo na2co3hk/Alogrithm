@@ -32,7 +32,7 @@ void split(const string& s, vector<string>& v, const string& c) {
 }
 
 //KMP算法
-//找出第一个匹配字串的下标
+//找出第一个匹配子串的下标
 //通过记录已经匹配的前缀加速下一次的匹配
 //https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/solution/shua-chuan-lc-shuang-bai-po-su-jie-fa-km-tb86/
 int strStr(string haystack, string needle) {

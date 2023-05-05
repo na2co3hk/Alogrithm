@@ -66,5 +66,57 @@ public:
  * int param_2 = obj->shortestPath(node1,node2);
  */
 ```
-* 时间复杂度： $O(n^2)$
+* 时间复杂度： $O(qn^2)$ ，其中q为调用求最短路次数
+* 空间复杂度： $O(n^2)$
+
+### 解法二：堆优化Dijkstra算法
+```cpp
+class Graph {
+public:
+    using PII = pair<int, int>;
+    const int inf = INT_MAX / 2;
+    vector<vector<PII>>g;
+    int n_;
+    Graph(int n, vector<vector<int>>& edges) {
+        g = vector<vector<PII>>(n);
+        n_ = n;
+        for(auto &edge : edges) g[edge[0]].emplace_back(edge[1], edge[2]);
+    }
+    
+    void addEdge(vector<int> edge) {
+        g[edge[0]].emplace_back(edge[1], edge[2]);
+    }
+    
+    int shortestPath(int node1, int node2) {
+        vector<int>dist(n_, inf);
+        dist[node1] = 0;
+        priority_queue<PII, vector<PII>, greater<>>pq;
+        pq.emplace(node1, 0);
+        while(!pq.empty())
+        {
+            auto [x, dx] = pq.top();
+            pq.pop();
+            if(dx > dist[x])continue;
+            for(auto [y, w] : g[x])
+            {
+                int dy = dist[x] + w;
+                if(dy < dist[y])
+                {
+                    dist[y] = dy;
+                    pq.emplace(y, dy);
+                }
+            } 
+        }
+        return dist[node2] == inf ? -1 : dist[node2];
+    }
+};
+
+/**
+ * Your Graph object will be instantiated and called as such:
+ * Graph* obj = new Graph(n, edges);
+ * obj->addEdge(edge);
+ * int param_2 = obj->shortestPath(node1,node2);
+ */
+```
+* 时间复杂度： $O(qn + nlogn)$ ，
 * 空间复杂度： $O(n^2)$

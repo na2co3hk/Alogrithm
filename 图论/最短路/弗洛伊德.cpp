@@ -12,3 +12,8 @@ void floyd()
             for (int j = 1; j <= n; j ++ )
                 d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
 }
+
+//有更新，新加一条x到y的边权重为w（下标随题目的点是否包含0而定）
+for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+              d[i][j] = min(d[i][j], d[i][x] + w + d[y][j]);

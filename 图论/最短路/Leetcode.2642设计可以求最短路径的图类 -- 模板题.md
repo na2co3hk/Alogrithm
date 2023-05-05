@@ -120,3 +120,49 @@ public:
 ```
 * 时间复杂度： $O(qnlogn)$ ，其中q为调用求最短路次数
 * 空间复杂度： $O(n + m)$ ，其中m为边的个数
+
+### 解法三：Floyd算法
+```cpp
+class Graph {
+public:
+    const int inf = INT_MAX / 3; //除以二会溢出
+    int n_;
+    vector<vector<int>>f;
+    Graph(int n, vector<vector<int>>& edges) {
+        n_ = n;
+        f = vector<vector<int>>(n, vector<int>(n, inf));
+        for(int i = 0;i < n;i++)f[i][i] = 0; //初始化
+        for(auto &edge : edges) f[edge[0]][edge[1]] = edge[2];
+        for(int k = 0;k < n;k++)
+        {
+            for(int i = 0;i < n;i++)
+            {
+                for(int j = 0;j < n;j++)f[i][j] = min(f[i][j], f[i][k] + f[k][j]);
+            }
+        }
+    }
+    
+    void addEdge(vector<int> edge) {
+        int x = edge[0], y = edge[1], w = edge[2];
+        if(w >= f[x][y])return ;//无需更新
+        for(int i = 0;i < n_;i++)
+        {
+            for(int j = 0;j < n_; j++)f[i][j] = min(f[i][j], f[i][x] + f[y][j] + w);
+        }
+    }
+    
+    int shortestPath(int node1, int node2) {
+        int ans = f[node1][node2];
+        return ans == inf ? -1 : ans;
+    }
+};
+
+/**
+ * Your Graph object will be instantiated and called as such:
+ * Graph* obj = new Graph(n, edges);
+ * obj->addEdge(edge);
+ * int param_2 = obj->shortestPath(node1,node2);
+ */
+```
+* 时间复杂度： $O(n^3 + qn^2)$ ，其中q为调用加边的次数
+* 空间复杂度： $O(n^2)$

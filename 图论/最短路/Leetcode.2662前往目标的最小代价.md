@@ -3,6 +3,8 @@
 ### 题目概述：
 Tag : 「最短路径」、「图」
 
+![image](https://user-images.githubusercontent.com/99656524/236482918-f90d6312-07fa-4fbf-b872-0d21981ee213.png)
+
 
 ### 数据范围
 * $start.length == target.length == 2$

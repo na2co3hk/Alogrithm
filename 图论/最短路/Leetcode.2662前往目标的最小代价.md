@@ -23,6 +23,15 @@ Tag : 「最短路径」、「图」
 
 C++代码：
 ```cpp
+class Solution {
+public:
+    using i64 = long long;
+    const i64 mask = (i64)2 << 31; //2**32 - 1即32位最大值
+    int cost(int x1, int y1, int x2, int y2)
+    {
+        return abs(x2 - x1) + abs(y2 - y1);
+    }
+    int minimumCost(vector<int>& start, vector<int>& target, vector<vector<int>>& specialRoads) {
         i64 t = (i64)target[0] << 32 | target[1]; //64位存坐标，当成一个点
         i64 s = (i64)start[0] << 32 | start[1];
         unordered_map<i64, int>dist = {{s, 0}, {t, INT_MAX}};

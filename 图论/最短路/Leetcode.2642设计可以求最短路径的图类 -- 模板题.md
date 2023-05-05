@@ -118,5 +118,5 @@ public:
  * int param_2 = obj->shortestPath(node1,node2);
  */
 ```
-* 时间复杂度： $O(qnlogn)$ ，
-* 空间复杂度： $O(n^2)$
+* 时间复杂度： $O(qnlogn)$ ，其中q为调用求最短路次数
+* 空间复杂度： $O(n + m)$ ，其中m为边的个数

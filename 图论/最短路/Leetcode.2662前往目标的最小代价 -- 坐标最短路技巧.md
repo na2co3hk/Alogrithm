@@ -1,4 +1,4 @@
-### 原题链接 -- [[2662. 前往目标的最小代价](https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads/)]
+### 原题链接 -- [[2642. 设计可以求最短路径的图类](https://leetcode.cn/problems/minimum-cost-of-a-path-with-special-roads/)]
 
 ### 题目概述：
 Tag : 「最短路径」、「图」

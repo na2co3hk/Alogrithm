@@ -54,7 +54,7 @@ public:
             //int xj = x & UINT32_MAX;//与MAX去掉高位恢复成y
             int xj = x & (mask - 1);
             int c = cost(xi, xj, target[0], target[1]);
-            dist[t] = min(dist[t], dx + c); //更新到x到终点的最短路
+            dist[t] = min(dist[t], dx + c); //更新x到终点的最短路
             for(auto &r : specialRoads)
             {
                 int d = dx + cost(r[0], r[1], xi, xj) + r[4]; //走特殊路径

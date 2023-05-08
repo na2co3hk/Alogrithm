@@ -16,7 +16,7 @@ void add(int i, int d)
 	for (int x = i; x <= n; x += lowbit(x))tree[x] += d;
 }
 
-//区间查询
+//求前缀和
 int sum(int i)
 {
 	int ans = 0;

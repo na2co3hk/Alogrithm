@@ -18,6 +18,7 @@ class Solution {
 public:
     int countSubstrings(string s) {
         int n = s.size();
+        //预处理回文子串，g[i][j]表示s[i:j]是否为回文串
         vector<vector<bool>>g(n, vector<bool>(n, true));
         for (int i = n - 1; i >= 0; --i)
         {

@@ -56,7 +56,7 @@ matrix mul(matrix a, matrix b)
 
 matrix pow(matrix a, int n)
 {
-   matrix res = { {1, 0}, {0, 1} };
+   matrix res = { {1, 0}, {0, 1} }; //n阶对角矩阵
    while (n)
    {
        if (n & 1)res = mul(res, a);

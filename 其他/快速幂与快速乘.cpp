@@ -32,36 +32,36 @@ long mul(long a, long k) {//可以改成int
     return ans;
 }
 
-//矩阵快速幂
+//矩阵快速幂，用于求一个矩阵m的n次方（O(logn)）
 using i64 = long long;
-    using matrix = vector<vector<int>>;
-    matrix mul(matrix a, matrix b)
-    {
-        int n = a.size();
-        int m = b.size();
-        int t = a[0].size();
-        matrix c(n, vector<int>(m, 0));
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                for (int k = 0; k < t; k++)
-                {
-                    c[i][j] += a[i][k] * b[k][j];
-                }
-            }
-        }
-        return c;
-    }
+using matrix = vector<vector<int>>;
+matrix mul(matrix a, matrix b)
+{
+   int n = a.size();
+   int m = b.size();
+   int t = a[0].size();
+   matrix c(n, vector<int>(m, 0));
+   for (int i = 0; i < n; i++)
+   {
+       for (int j = 0; j < m; j++)
+       {
+	   for (int k = 0; k < t; k++)
+	   {
+	       c[i][j] += a[i][k] * b[k][j];
+	   }
+       }
+   }
+   return c;
+}
 
-    matrix pow(matrix a, int n)
-    {
-        matrix res = { {1, 0}, {0, 1} };
-        while (n)
-        {
-            if (n & 1)res = mul(res, a);
-            a = mul(a, a);
-            n >>= 1;
-        }
-        return res;
-    }
+matrix pow(matrix a, int n)
+{
+   matrix res = { {1, 0}, {0, 1} };
+   while (n)
+   {
+       if (n & 1)res = mul(res, a);
+       a = mul(a, a);
+       n >>= 1;
+   }
+   return res;
+}

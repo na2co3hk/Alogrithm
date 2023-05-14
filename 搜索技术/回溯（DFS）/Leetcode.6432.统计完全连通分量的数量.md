@@ -60,5 +60,55 @@ public:
 * 时间复杂度： $O(n + m)$ 
 * 空间复杂度： $O(n + m)$
 
+### 解法二：广度优先搜索
+同样，也可以用广度优先搜索进行遍历图
 
+C++代码：
+```cpp
+class Solution {
+public:
+    int countCompleteComponents(int n, vector<vector<int>>& edges) {
+        vector<vector<int>>g(n);
+        for(auto & edge : edges)
+        {
+            int x = edge[0], y = edge[1];
+            g[x].push_back(y);
+            g[y].push_back(x);
+        }
+        vector<bool>vis(n);
+        int ans = 0, v , e; //v表示点,e表示边
+        function<void(int x)>bfs = [&](int x)
+        {
+            queue<int>q;
+            q.push(x);
+            vis[x] = true;
+            while(!q.empty())
+            {
+                auto p = q.front();
+                q.pop();
+                v++;
+                for(int y : g[p])
+                {
+                    e++;
+                    if(!vis[y])q.push(y);
+                    vis[y] = true;
+                }   
+            }
+        };
 
+        for(int i = 0;i < n;i++)
+        {
+            if(!vis[i])
+            {
+                v = 0;
+                e = 0;
+                bfs(i);
+                ans += (e == v * (v - 1));
+            }
+        }
+        return ans;
+    }
+};
+```
+* 时间复杂度： $O(n + m)$ 
+* 空间复杂度： $O(n + m)$

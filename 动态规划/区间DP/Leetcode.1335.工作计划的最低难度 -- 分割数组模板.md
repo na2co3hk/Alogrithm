@@ -11,3 +11,5 @@ Tag : 「动态规划」
 * 1 <= jobDifficulty.length <= 300
 * 0 <= jobDifficulty[i] <= 1000
 * 1 <= d <= 10
+
+### 解法一：动态规划

@@ -1,4 +1,4 @@
-### 原题链接 -- [[410. 分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)]
+### 原题链接 -- [[1335. 工作计划的最低难度](https://leetcode.cn/problems/minimum-difficulty-of-a-job-schedule/)]
 
 ### 题目概述：
 Tag : 「动态规划」

@@ -55,3 +55,31 @@ public:
 * 时间复杂度： $O(nlog(r - l))$ ，其中 $l$ , $r$ 为上下界
 * 空间复杂度： $O(1)$
 
+### 解法二：动态规划
+很明显这是一个分割数组问题，对于分割数组，最常见的做法就是动态规划，动态规划的状态定义为f[i][j]表示考虑前i个数组元素，分割成j份的最大数组和。
+
+C++代码：
+```cpp
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+        int n = nums.size();
+        vector<vector<long long>> f(n + 1, vector<long long>(m + 1, LLONG_MAX));
+        vector<long long> sub(n + 1, 0);
+        for (int i = 0; i < n; i++) {
+            sub[i + 1] = sub[i] + nums[i];
+        }
+        f[0][0] = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= min(i, m); j++) {
+                for (int k = 0; k < i; k++) {
+                    f[i][j] = min(f[i][j], max(f[k][j - 1], sub[i] - sub[k]));
+                }
+            }
+        }
+        return (int)f[n][m];
+    }
+};
+```
+* 时间复杂度： $O(n^2m)$
+* 空间复杂度： $O(nm)$

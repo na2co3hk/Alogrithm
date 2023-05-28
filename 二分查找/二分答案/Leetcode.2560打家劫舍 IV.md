@@ -1,4 +1,4 @@
-### 原题链接 -- [[LCP 75. 传送卷轴](https://leetcode.cn/problems/rdmXM7/)]
+### 原题链接 -- [[2560. 打家劫舍 IV](https://leetcode.cn/problems/house-robber-iv/)]
 
 ### 题目概述：
 Tag : 「二分查找」、「动态规划」
@@ -11,3 +11,5 @@ Tag : 「二分查找」、「动态规划」
 * $1 <= nums.length <= 10^5$
 * $1 <= nums[i] <= 10^9$
 * $1 <= k <= (nums.length + 1)/2$
+
+### 解法一：动态规划 + 二分查找

@@ -43,4 +43,4 @@ class Solution:
         return dfs(0, True, True, 0)
 ```
 * 时间复杂度： $O(10nm)$
-* 空间复杂度： $$(nm)$
+* 空间复杂度： $O(nm)$

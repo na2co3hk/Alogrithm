@@ -38,3 +38,8 @@ n & (~(1 << k))
 
 //二进制中1的个数
 __builtin_popcount(n)
+
+// 降序遍历 x 的非空子集
+for (int sub = x; sub; sub = (sub - 1) & x) {
+    // sub 是 x 的一个非空子集
+}

@@ -10,8 +10,8 @@ Tag : 「数据结构」
 ![image](https://user-images.githubusercontent.com/99656524/236863131-a2463345-67d2-4f38-ae50-83efecb546a4.png)
 
 ### 数据范围
-* 0 <= num, target <= 2 * 104
-* 调用search, add,  erase操作次数不大于 5 * 104 
+* $0 <= num, target <= 2 * 10^4$
+* $调用search, add,  erase操作次数不大于 5 * 10^4$ 
 
 ### 解法一：跳表
 当作是一个模板，原理就和链表基本差不多，详细看看官解吧（掩盖不会的事实）
